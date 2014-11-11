@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E0849476-0465-414C-81F2-4EE3DDC248BC}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Alanta.Client.Media</RootNamespace>
+    <AssemblyName>Alanta.Client.Media</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="cspeex">
+      <HintPath>..\Libraries\cspeex.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Silverlight">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4\Microsoft.Threading.Tasks.Extensions.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.1.2\lib\sl5\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Blend_SL5">
+      <HintPath>..\packages\reactiveui-xaml.4.6.7\lib\SL5\ReactiveUI.Blend_SL5.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.NLog_SL5">
+      <HintPath>..\packages\reactiveui-nlog.4.6.7\lib\sl5\ReactiveUI.NLog_SL5.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Routing_SL5">
+      <HintPath>..\packages\reactiveui-xaml.4.6.7\lib\SL5\ReactiveUI.Routing_SL5.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Xaml_SL5">
+      <HintPath>..\packages\reactiveui-xaml.4.6.7\lib\SL5\ReactiveUI.Xaml_SL5.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI_SL5">
+      <HintPath>..\packages\reactiveui-core.4.6.7\lib\SL5\ReactiveUI_SL5.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.7\lib\sl5\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\SL5\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\SL5\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\SL5\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\SL5\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading">
+      <HintPath>..\packages\Rx-XAML.2.1.30214.0\lib\SL5\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.7\lib\sl5\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.7\lib\sl5\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core">
+      <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Approximate.cs" />
+    <Compile Include="AudioCodecs\G711.cs" />
+    <Compile Include="AudioCodecs\G711MuLawDecoder.cs" />
+    <Compile Include="AudioCodecs\G711MuLawEncoder.cs" />
+    <Compile Include="AudioCodecs\IAudioEncoder.cs" />
+    <Compile Include="AudioCodecs\NullAudioDecoder.cs" />
+    <Compile Include="AudioCodecs\NullAudioEncoder.cs" />
+    <Compile Include="AudioCodecs\SpeexDecoder.cs" />
+    <Compile Include="AudioCodecs\SpeexEncoder.cs" />
+    <Compile Include="AudioCodecType.cs" />
+    <Compile Include="AudioConstants.cs" />
+    <Compile Include="AudioContext.cs" />
+    <Compile Include="AudioContextFactory.cs" />
+    <Compile Include="AudioFormat.cs" />
+    <Compile Include="AudioJitterQueue.cs" />
+    <Compile Include="AudioJitterQueueEntry.cs" />
+    <Compile Include="AudioJitterQueueLogger.cs" />
+    <Compile Include="AudioMediaStreamSource.cs" />
+    <Compile Include="AudioMediaStreamSourceLogger.cs" />
+    <Compile Include="AudioSinkAdapter.cs" />
+    <Compile Include="AudioSinkAdapterLogger.cs" />
+    <Compile Include="AudioStatistics.cs" />
+    <Compile Include="ByteStream.cs" />
+    <Compile Include="CodecFactory.cs" />
+    <Compile Include="Crc32.cs" />
+    <Compile Include="DebugHelper.cs" />
+    <Compile Include="DSP\AssortedFilters.cs" />
+    <Compile Include="DSP\DoubleTalkDetector.cs" />
+    <Compile Include="DSP\DspConstants.cs" />
+    <Compile Include="DSP\DspHelper.cs" />
+    <Compile Include="DSP\DtxFilter.cs" />
+    <Compile Include="DSP\EchoCancelFilter.cs" />
+    <Compile Include="DSP\EchoCancelFilterLogger.cs" />
+    <Compile Include="DSP\IAudioFilter.cs" />
+    <Compile Include="DSP\IDtxFilter.cs" />
+    <Compile Include="DSP\NullAudioFilter.cs" />
+    <Compile Include="DSP\NullAudioInPlaceFilter.cs" />
+    <Compile Include="DSP\NullEchoCancelFilter.cs" />
+    <Compile Include="DSP\ResampleFilter.cs" />
+    <Compile Include="DSP\ResampleFilterLogger.cs" />
+    <Compile Include="DSP\ResampleFilterMismatch.cs" />
+    <Compile Include="DSP\ResampleFilterTiming.cs" />
+    <Compile Include="DSP\Speex\SpeexEchoCancelFilter.cs" />
+    <Compile Include="DSP\Speex\SpeexEchoCanceller.cs" />
+    <Compile Include="DSP\Speex\SpeexEchoCanceller2.cs" />
+    <Compile Include="DSP\Speex\SpeexFft.cs" />
+    <Compile Include="DSP\Speex\SpeexFilterBank.cs" />
+    <Compile Include="DSP\Speex\SpeexPreprocessFilter.cs" />
+    <Compile Include="DSP\TimeDomainEchoCancelFilter.cs" />
+    <Compile Include="DSP\VoiceActivityDetector.cs" />
+    <Compile Include="DSP\WebRtc\AecCore.cs" />
+    <Compile Include="DSP\WebRtc\AecPc.cs" />
+    <Compile Include="DSP\WebRtc\Agc.cs" />
+    <Compile Include="DSP\WebRtc\Fft.cs" />
+    <Compile Include="DSP\WebRtc\NoiseSuppressor.cs" />
+    <Compile Include="DSP\WebRtc\WebRtcConstants.cs" />
+    <Compile Include="DSP\WebRtc\WebRtcFilter.cs" />
+    <Compile Include="DSP\WebRtc\WebRtcUtil.cs" />
+    <Compile Include="EnvironmentAdapter.cs" />
+    <Compile Include="IAudioContextFactory.cs" />
+    <Compile Include="IAudioController.cs" />
+    <Compile Include="IAudioJitter.cs" />
+    <Compile Include="ICodecFactory.cs" />
+    <Compile Include="IMediaConnection.cs" />
+    <Compile Include="IMediaEnvironment.cs" />
+    <Compile Include="IMediaPacket.cs" />
+    <Compile Include="IMediaSinkFactory.cs" />
+    <Compile Include="INetClient.cs" />
+    <Compile Include="IObjectPool.cs" />
+    <Compile Include="IReferenceCount.cs" />
+    <Compile Include="IVideoController.cs" />
+    <Compile Include="IVideoQualityController.cs" />
+    <Compile Include="MediaCommand.cs" />
+    <Compile Include="MediaCommandAddClient.cs" />
+    <Compile Include="MediaCommandCreateRoom.cs" />
+    <Compile Include="MediaCommandSet.cs" />
+    <Compile Include="MediaConfig.cs" />
+    <Compile Include="MediaConstants.cs" />
+    <Compile Include="MediaController.cs" />
+    <Compile Include="MediaControllerLogger.cs" />
+    <Compile Include="MediaEnvironment.cs" />
+    <Compile Include="MediaSinkFactory.cs" />
+    <Compile Include="MediaStatistics.cs" />
+    <Compile Include="MediaStrings.Designer.cs" />
+    <Compile Include="NetClient.cs" />
+    <Compile Include="NetClientLogger.cs" />
+    <Compile Include="NetClientRtpController.cs" />
+    <Compile Include="NetClientRtpReflector.cs" />
+    <Compile Include="ObjectPool.cs" />
+    <Compile Include="ObservableDictionary.cs" />
+    <Compile Include="OperationMode.cs" />
+    <Compile Include="PerformanceMonitor.cs" />
+    <Compile Include="PriorityQueue.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferenceCountedObjectPool.cs" />
+    <Compile Include="ReferenceCountedObjectPoolDebug.cs" />
+    <Compile Include="RtpMediaConnection.cs" />
+    <Compile Include="RtpPacket.cs" />
+    <Compile Include="RtpPacketConnect.cs" />
+    <Compile Include="RtpPacketData.cs" />
+    <Compile Include="VideoCodecs\BlockType.cs" />
+    <Compile Include="VideoCodecs\Chunk.cs" />
+    <Compile Include="VideoCodecs\ChunkHelper.cs" />
+    <Compile Include="VideoCodecs\DecodedFrame.cs" />
+    <Compile Include="VideoCodecs\FrameBlock.cs" />
+    <Compile Include="VideoCodecs\IVideoCodec.cs" />
+    <Compile Include="VideoCodecs\JpegDiffVideoCodec.cs" />
+    <Compile Include="VideoCodecs\JpegFrameContextFactory.cs" />
+    <Compile Include="VideoCodecs\NullVideoCodec.cs" />
+    <Compile Include="VideoCodecs\ParsedFrame.cs" />
+    <Compile Include="VideoCodecs\VideoFrame.cs" />
+    <Compile Include="VideoCodecs\VideoHelper.cs" />
+    <Compile Include="VideoConstants.cs" />
+    <Compile Include="VideoMediaStreamSource.cs" />
+    <Compile Include="VideoQualityController.cs" />
+    <Compile Include="VideoSinkAdapter.cs" />
+    <Compile Include="VideoThreadData.cs" />
+    <Compile Include="WaveFormat.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Alanta.Client.Common\Alanta.Client.Common.csproj">
+      <Project>{4e54d616-b9d7-4caf-9a39-9e9f838cf4ef}</Project>
+      <Name>Alanta.Client.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Alanta.Client.Media.Jpeg\Alanta.Client.Media.Jpeg.csproj">
+      <Project>{855d792c-ce63-4e10-9cdd-0efb18aee9e9}</Project>
+      <Name>Alanta.Client.Media.Jpeg</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="MediaClassDiagram.cd" />
+    <None Include="packages.config" />
+    <None Include="VideoCodecs\Delta Conversion Examples.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MediaStrings.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

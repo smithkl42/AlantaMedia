@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Alanta.Client.Media.MediaController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQgEQGiMnCJlEBFFMqCCAshjgIAkqAEYBgjwQwqpwGQ=</HashCode>
+      <FileName>MediaController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Alanta.Client.Media.AudioSinkAdapter" Collapsed="true">
+    <Position X="3.75" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAAgAAAAAAAAAAANAIEAAAABAAAUAAABUABAAAAAAGI=</HashCode>
+      <FileName>AudioSinkAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.AudioMediaStreamSource" Collapsed="true">
+    <Position X="3.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAIAAAAAIAAAAAAAAAAAAgQQIAAQgAAAAAIQAAIASCA=</HashCode>
+      <FileName>AudioMediaStreamSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.RtpMediaConnection" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAUQAAAgACgEFQBgACAAGIJBAAABAAsBDBDAAAAIAAQ=</HashCode>
+      <FileName>RtpMediaConnection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.AudioFormat" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAEgAAAIQAAABAgQoAQABAAAAIAGiA=</HashCode>
+      <FileName>AudioFormat.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.MediaStatistics" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>MediaStatistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.Counter" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAIACAAAAAAAAAEqAAAAxAIAAAAAEARAAgAAAAAEA=</HashCode>
+      <FileName>MediaStatistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.CounterEntry" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>MediaStatistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.MediaEnvironment" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAgAAkAKgAAAAAACQAEAAYAAI=</HashCode>
+      <FileName>MediaEnvironment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.AudioContext" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQBAAAARgAEAEAAAAAAAAAAABAAABAAJAAAAAAAA=</HashCode>
+      <FileName>AudioContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.AudioContextFactory" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAABAACAAAIIAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AudioContextFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.VideoQualityController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgEMIEIAIAIYAACAJRAYEB2EzgAAAABACAAAAgAAAE=</HashCode>
+      <FileName>VideoQualityController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Alanta.Client.Media.VideoSinkAdapter" Collapsed="true">
+    <Position X="3.75" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACACAIAEAAAAAAABAKEAADAAgAAAAAAB0ABCAAAgAAA=</HashCode>
+      <FileName>VideoSinkAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.VideoMediaStreamSource" Collapsed="true">
+    <Position X="3.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAwIIAAAAAQAACAAJgQQAAAIgQAAAAgQIAIAQAA=</HashCode>
+      <FileName>VideoMediaStreamSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.Dsp.DtxFilter" Collapsed="true">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACQAAAAECAAAAAAAAhAQAAIAAAAAABAAAAA=</HashCode>
+      <FileName>Dsp\DtxFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.Dsp.ResampleFilter" Collapsed="true">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICEAgAgAAEAACCQMAAMCAAAgIIAQAhAAAAAEAAEgAEA=</HashCode>
+      <FileName>Dsp\ResampleFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.Dsp.WebRtc.WebRtcFilter" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAEAACAAAAIAIAAAIAAJAAAAAACAAAA=</HashCode>
+      <FileName>Dsp\WebRtc\WebRtcFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.AudioCodecs.G711MuLawDecoder" Collapsed="true">
+    <Position X="9.25" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAIAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>AudioCodecs\G711MuLawDecoder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.AudioCodecs.G711MuLawEncoder" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAKAAAAABAAAAEAAIAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AudioCodecs\G711MuLawEncoder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.AudioCodecs.SpeexDecoder" Collapsed="true">
+    <Position X="9.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAIAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>AudioCodecs\SpeexDecoder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.AudioCodecs.SpeexEncoder" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACAAAAABAAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AudioCodecs\SpeexEncoder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.RtpPacket" Collapsed="true">
+    <Position X="9.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAKAAAAAAAgAgAAAAAAQAAAAAABCABABAAAQA=</HashCode>
+      <FileName>RtpPacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.RtpPacketConnect" Collapsed="true">
+    <Position X="8" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAQAAAAAEAAgAAAAAAQAAQAAABAABAAAAAQA=</HashCode>
+      <FileName>RtpPacketConnect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.RtpPacketData" Collapsed="true">
+    <Position X="10.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQQAAAAUCAgQCCAIAwAIAAAABAABAgAAAQA=</HashCode>
+      <FileName>RtpPacketData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.Dsp.EchoCancelFilter" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAQEASAAAAAkKAAwAAAAABAMgAEQAEA=</HashCode>
+      <FileName>Dsp\EchoCancelFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alanta.Client.Media.VideoCodecs.DecodedFrame" Collapsed="true">
+    <Position X="3.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAABAAAAAAAAAAAAAgAAAAAAQAAAEA=</HashCode>
+      <FileName>VideoCodecs\DecodedFrame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.VideoCodecs.ParsedFrame" Collapsed="true">
+    <Position X="5.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAABAAAEAAIAACAAAAAAEAAABAAAA=</HashCode>
+      <FileName>VideoCodecs\ParsedFrame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alanta.Client.Media.VideoCodecs.VideoFrame" Collapsed="true">
+    <Position X="4.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAwAQAAAAAAAIEAAAAABAAAgACABAgA=</HashCode>
+      <FileName>VideoCodecs\VideoFrame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Alanta.Client.Media.IAudioContextFactory" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAACAAAIIAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IAudioContextFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IAudioController" Collapsed="true">
+    <Position X="15.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAgAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>IAudioController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IAudioJitter" Collapsed="true">
+    <Position X="15.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>IAudioJitter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.ICodecFactory" Collapsed="true">
+    <Position X="15.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAgAAAAAAAAAAAQA=</HashCode>
+      <FileName>ICodecFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IMediaConnection" Collapsed="true">
+    <Position X="15.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAIABAAABAAgAAACAAAAAAAQ=</HashCode>
+      <FileName>IMediaConnection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IMediaEnvironment" Collapsed="true">
+    <Position X="15.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAKAAAAAAACAAAAAQAAA=</HashCode>
+      <FileName>IMediaEnvironment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IMediaPacket" Collapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAACAgQACAAAgAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>IMediaPacket.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IMediaSinkFactory" Collapsed="true">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IMediaSinkFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.INetClient" Collapsed="true">
+    <Position X="17.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAEAAAIAACAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INetClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IObjectPool&lt;T&gt;" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>IObjectPool.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IReferenceCount" Collapsed="true">
+    <Position X="17.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IReferenceCount.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IVideoController" Collapsed="true">
+    <Position X="17.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAIAAA=</HashCode>
+      <FileName>IVideoController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.IVideoQualityController" Collapsed="true">
+    <Position X="17.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgEAAEAAIAAIAAAAIQAAEBgAgAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>IVideoQualityController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.AudioCodecs.IAudioEncoder" Collapsed="true">
+    <Position X="15.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AudioCodecs\IAudioEncoder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.AudioCodecs.IAudioDecoder" Collapsed="true">
+    <Position X="15.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>AudioCodecs\IAudioEncoder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.Dsp.IAudioFilter" Collapsed="true">
+    <Position X="17.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAQAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Dsp\IAudioFilter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.Dsp.IAudioTwoWayFilter" Collapsed="true">
+    <Position X="17.5" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dsp\IAudioFilter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.Dsp.IAudioInplaceFilter" Collapsed="true">
+    <Position X="15.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dsp\IAudioFilter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.Dsp.IDtxFilter" Collapsed="true">
+    <Position X="15.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dsp\IDtxFilter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alanta.Client.Media.VideoCodecs.IVideoCodec" Collapsed="true">
+    <Position X="17.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAgAAAAIAAAAAAAAEIAgAABAAAAA=</HashCode>
+      <FileName>VideoCodecs\IVideoCodec.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

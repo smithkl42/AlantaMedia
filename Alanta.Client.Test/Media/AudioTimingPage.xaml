@@ -1,0 +1,53 @@
+﻿<navigation:Page 
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  
+    x:Class="Alanta.Client.Test.Media.AudioTimingPage" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+    d:DesignWidth="640" d:DesignHeight="480"
+    Title="AudioTimingPage Page">
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" >
+            <Button x:Name="enableMicrophone" Content="Enable Microphone" Margin="4" Click="enableMicrophone_Click" />
+            <Button x:Name="sendPulse" Content="Start Sending Audio Pulse" Margin="4" Click="sendPulse_Click" />
+            <Button x:Name="stopPulse" Content="Stop Sending Audio Pulse" Margin="4" Click="stopPulse_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <sdk:Label Margin="4" Content="Current Statistics" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <sdk:Label Grid.Row="0">Average Volume:</sdk:Label>
+                <sdk:Label Grid.Row="1">Max Volume</sdk:Label>
+                <sdk:Label Grid.Row="2">Average Pulse Delay:</sdk:Label>
+                <sdk:Label Grid.Row="3">Std Dev Pulse Delay:</sdk:Label>
+                <sdk:Label Grid.Row="2" Grid.Column="2">Max Pulse Delay</sdk:Label>
+                <sdk:Label Grid.Row="3" Grid.Column="2">Min Pulse Delay</sdk:Label>
+                <sdk:Label Margin="4" Grid.Row="0" Grid.Column="1" x:Name="lblAverageVolume">0</sdk:Label>
+                <sdk:Label Margin="4" Grid.Row="1" Grid.Column="1" x:Name="lblMaxVolume">0</sdk:Label>
+                <sdk:Label Margin="4" Grid.Row="2" Grid.Column="1" x:Name="lblAveragePulseDelay">0</sdk:Label>
+                <sdk:Label Margin="4" Grid.Row="3" Grid.Column="1" x:Name="lblStdDevPulseDelay">0</sdk:Label>
+                <sdk:Label Margin="4" Grid.Row="2" Grid.Column="3" x:Name="lblMaxPulseDelay">0</sdk:Label>
+                <sdk:Label Margin="4" Grid.Row="3" Grid.Column="3" x:Name="lblMinPulseDelay">0</sdk:Label>
+            </Grid>
+            <TextBox x:Name="txtStats" Height="350" VerticalScrollBarVisibility="Auto" />
+        </StackPanel>
+    </Grid>
+</navigation:Page>

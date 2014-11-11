@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<body>
+    <h3>Prerequisites</h3>
+    <ol>
+        <li>IIS (with ASP.NET)</li>
+        <li>SQL Server 2008 (installed as the default instance)</li>
+        <li>VS2010</li>
+        <li>Silverlight 4 Tools for Visual Studio</li>
+        <li>Silverlight 4 Toolkit</li>
+        <li>Subversion Client</li>
+    </ol>
+    <h3>Build and Run Steps:</h3>
+    <ol>
+        <li>Confirm that all the above tools are installed and configured correctly. If you can't figure out how to do that, maybe you don't need to be reading this :-).</li>
+        <li>Check out the appropriate directory structure from subversion 
+            (<a href="http://alanta.unfuddle.com/svn/alanta_alanta/trunk/AlantaClient">http://alanta.unfuddle.com/svn/alanta_alanta/trunk/AlantaClient</a>).</li>
+        <li>Copy .\Alanta.Web\ClientAccessPolicy.xml 
+            to the root of your default IIS instance (e.g., &quot;c:\inetpub\wwwroot&quot;), and 
+            confirm that http://localhost/ClientAccessPolicy.xml is accessible.</li>
+        <li>Add an entry for &quot;127.0.0.1 dev.alanta.com&quot; to your 
+            c:\windows\system32\drivers\etc\hosts file.</li>
+        <li>Create the Alanta database through the SQL Server Management Studio tool.</li>
+        <li>Open the.\AlantaClient.sln file in VS2010.</li>
+        <li>Set the database deployment properties in the AlantaDB project by right-clicking 
+            the AlantaDB project, choosing &quot;Properties&quot; and then the &quot;Deploy&quot; tab.
+        <ol>
+        <li>Configure deployment settings for: -> My isolated development environment</li>
+        <li>Deploy action: -> Create a deployment script and deploy to the database</li>
+        <li>Next to Target connection, click the &quot;Edit&quot; button:<ol>
+            <li>Server name: (local)</li>
+            <li>Use SQL Server Authentication (with user name &#39;sa&#39;)</li>
+            <li>Connect to the database &quot;Alanta&quot;</li>
+            <li>Click on &quot;OK&quot;.</li>
+            <li>The resulting connection string should be:&nbsp; Data Source=(local);Integrated Security=True;Pooling=False;MultipleActiveResultSets=True</li>
+            </ol>
+            </li>
+        <li>Target database name: -> Alanta</li>
+        </ol>
+        <li>Populate the Alanta database by right-clicking the AlantaDB project and choosing "Deploy".</li>
+        <li>Set the startup projects by right-clicking the solution and choosing &quot;Set 
+            startup projects&quot;.&nbsp; The action for &quot;Alanta.ConsoleHost&quot; and the 
+            &quot;Alanta.Web&quot; projects should be set to to &quot;Start&quot;; all others should be set to 
+            &quot;None&quot;.</li>
+        <li>Set the startup page by navigating to Alanta.Web\Test\Test.aspx.&nbsp; 
+            Right-click on that file and choose &quot;Set as startup page.&quot;</li>
+        <li>Set the web debugging options by right-clicking on the Alanta.Web project and 
+            choosing &quot;Properties&quot;.&nbsp; Select the &quot;Web&quot; tab and choose &quot;ASP.NET&quot; and 
+            &quot;Silverlight&quot; as the two active debuggers.</li>
+        <li>Optional: build and launch the media server (<a href="http://alanta.unfuddle.com/svn/alanta_alanta/trunk/VoiceModule">http://alanta.unfuddle.com/svn/alanta_alanta/trunk/VoiceModule</a>). 
+            This isn&#39;t strictly necessary, but the media features won&#39;t be available if it&#39;s 
+            not running.</li>
+        <li>Optional: build and launch the RFB reflector server (<a href="http://alanta.unfuddle.com/svn/alanta_alanta/trunk/AlantaRfb">http://alanta.unfuddle.com/svn/alanta_alanta/trunk/AlantaRfb</a>). 
+            This isn&#39;t strictly necessary, but the desktop sharing features won&#39;t be 
+            available if it&#39;s not running.</li>
+        <li>Optional: build and launch the file conversion server (<a href="http://alanta.unfuddle.com/svn/alanta_alanta/trunk/ConversionManager">http://alanta.unfuddle.com/svn/alanta_alanta/trunk/ConversionManager</a>). 
+            This isn&#39;t strictly necessary, but the file sharing features won&#39;t be available 
+            if it&#39;s not running.</li>
+        <li>Launch the project by hitting F5.</li>
+        <li>In the web page that opens, click the button &quot;Create 
+            Room as Guest&quot;. &nbsp;The Alanta Client should load.</li>
+    </ol>
+
+    <h3>Troubleshooting</h3>
+    <ul>
+        <li>More to come here as we document typical problems.</li>
+    </ul>
+
+</body>
+</html>

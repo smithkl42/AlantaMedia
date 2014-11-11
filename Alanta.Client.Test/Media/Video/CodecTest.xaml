@@ -1,0 +1,147 @@
+﻿<navigation:Page 
+	x:Class="Alanta.Client.Test.Media.Video.CodecTest" 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+	d:DesignWidth="1000" d:DesignHeight="480"
+	Title="VideoCodecTest Page">
+	<Grid x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*" />
+			<ColumnDefinition Width="4*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="250" />
+			<RowDefinition  />
+		</Grid.RowDefinitions>
+
+		<StackPanel Orientation="Horizontal" Grid.Row="0" x:Name="panelWebcam" VerticalAlignment="Center" >
+			<sdk:Label HorizontalAlignment="Left" Margin="10,5,5,5" Content="Step 1: Enable Webcam" Grid.Row="0" />
+			<TextBlock Margin="4" Text="{Binding VideoCaptureDevice.DesiredFormat.FramesPerSecond, StringFormat='fps:{0}'}" />
+			<TextBlock Margin="4" Text="{Binding VideoCaptureDevice.DesiredFormat.PixelWidth, StringFormat='width:{0}'}" />
+			<TextBlock Margin="4" Text="{Binding VideoCaptureDevice.DesiredFormat.PixelHeight, StringFormat='height:{0}'}" />
+		</StackPanel>
+		<Button Grid.Column="1" Content="Enable Webcam" Margin="5" x:Name="btnEnableWebcam" Click="btnEnableWebcam_Click" Width="120" HorizontalAlignment="Left" Grid.Row="0" />
+		<TextBox x:Name="txtStatus" IsReadOnly="True" HorizontalAlignment="Stretch" Grid.Column="1" Margin="136,5,5,5" Text="{Binding Status}" />
+
+		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Step 2: Get Video To Test With" Grid.Row="1" />
+		<StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
+			<Button Content="Record Source" Margin="5" Width="120" x:Name="btnRecordRaw" Click="btnRecordRaw_Click" />
+			<sdk:Label>...or...</sdk:Label>
+			<Button Grid.Column="1" Content="Open Source" Margin="5" Width="120" x:Name="btnOpenSource" Click="btnOpenRaw_Click" />
+			<sdk:Label>... and you can then -></sdk:Label>
+			<Button Content="Save Source" Margin="5" Width="120" x:Name="btnSaveRaw" IsEnabled="False" Click="btnSaveSource_Click"/>
+			<Button Content="Play" Margin="5" x:Name="btnPlayRaw" IsEnabled="False" Click="btnPlayRaw_Click" />
+			<TextBlock x:Name="lblFramesRecorded" Text="{Binding FramesRecorded, StringFormat='FramesRecorded:{0}'}" />
+		</StackPanel>
+
+		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Step 3: Run Video Codec Tests" Grid.Row="2" />
+		<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="2" >
+			<Button Content="Start" Margin="5" x:Name="btnStart" Width="120" IsEnabled="False" Click="btnStart_Click"/>
+			<Button x:Name="btnExport" Content="Export Results" Width="120" Margin="5" IsEnabled="False" Click="btnExport_Click" />
+		</StackPanel>
+
+		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Selected Video Codec" Grid.Row="3" />
+		<StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="3" >
+			<ComboBox x:Name="cboVideoCodec" Height="25" Margin="5" SelectedIndex="0">
+				<ComboBox.Items>
+					<ComboBoxItem IsSelected="True">JDIF</ComboBoxItem>
+				</ComboBox.Items>
+			</ComboBox>
+			<CheckBox x:Name="chkKeepProcessedFrames" Content="Keep Processed Frames (much more memory)" Margin="4" VerticalAlignment="Center" />
+		</StackPanel>
+
+		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="NoSendCutoff" Grid.Row="4" />
+		<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="4" >
+			<sdk:Label x:Name="temp" Content="Start:" />
+			<TextBox Margin="10,4" x:Name="txtNoSendStart" Text="1000" Width="70" HorizontalAlignment="Left" />
+			<sdk:Label Content="End:" />
+			<TextBox Margin="10,4" x:Name="txtNoSendEnd" Text="3000" Width="70" HorizontalAlignment="Left" />
+			<sdk:Label Content="Step:" />
+			<TextBox Margin="10,4" x:Name="txtNoSendStep" Text="200" Width="70" HorizontalAlignment="Left" />
+		</StackPanel>
+
+		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="DeltaSendCutoff" Grid.Row="5" />
+		<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="5" >
+			<sdk:Label Content="Start:" />
+			<TextBox Margin="10,4" x:Name="txtDeltaSendStart" Text="1000" Width="70" HorizontalAlignment="Left" />
+			<sdk:Label Content="End:" />
+			<TextBox Margin="10,4" x:Name="txtDeltaSendEnd" Text="4000" Width="70" HorizontalAlignment="Left" />
+			<sdk:Label Content="Step:" />
+			<TextBox Margin="10,4" x:Name="txtDeltaSendStep" Text="400" Width="70" HorizontalAlignment="Left" />
+		</StackPanel>
+		
+		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Jpeg Quality" Grid.Row="6" />
+		<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="6" >
+			<sdk:Label Content="Start:" />
+			<TextBox Margin="10,4" x:Name="txtJpegQualityStart" Text="50" Width="70" HorizontalAlignment="Left" />
+			<sdk:Label Content="End:" />
+			<TextBox Margin="10,4" x:Name="txtJpegQualityEnd" Text="50" Width="70" HorizontalAlignment="Left" />
+			<sdk:Label Content="Step:" />
+			<TextBox Margin="10,4" x:Name="txtJpegQualityStep" Text="10" Width="70" HorizontalAlignment="Left" />
+		</StackPanel>
+
+		<StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="4"  Grid.Row="7" >
+			<StackPanel Orientation="Vertical" Margin="4">
+				<sdk:Label>Live (if recording)</sdk:Label>
+				<Rectangle x:Name="videoCapture" Height="240" Width="320" />
+			</StackPanel>
+			<StackPanel Orientation="Vertical" Margin="4">
+				<sdk:Label>Recorded (Raw)</sdk:Label>
+				<MediaElement x:Name="mRawMediaElement" Height="240" Width="320" />
+				<Image x:Name="imgLastRawFrame" Height="240" Width="320" Visibility="Collapsed" />
+			</StackPanel>
+			<StackPanel Orientation="Vertical" Margin="4">
+				<sdk:Label>Processed (Encoded and Decoded)</sdk:Label>
+				<MediaElement x:Name="mProcessedMediaElement" Height="240" Width="320" />
+				<Image x:Name="imgLastProcessedFrame" Height="240" Width="320" Visibility="Collapsed" />
+			</StackPanel>
+		</StackPanel>
+
+		<sdk:DataGrid x:Name="grdResults" Grid.ColumnSpan="2" AutoGenerateColumns="False" Grid.Row="8" IsReadOnly="True" >
+			<sdk:DataGrid.Columns>
+				<sdk:DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
+				<!--
+				<sdk:DataGridTextColumn Header="AcceptFps" Binding="{Binding VideoQualityController.AcceptFramesPerSecond}" />
+				<sdk:DataGridTextColumn Header="InterleaveFactor" Binding="{Binding VideoQualityController.InterleaveFactor}" />
+				<sdk:DataGridTextColumn Header="FullFrameInterval" Binding="{Binding VideoQualityController.FullFrameInterval}" />
+				-->
+				<sdk:DataGridTextColumn Header="NoSendCutoff" Binding="{Binding VideoQualityController.NoSendCutoff}" />
+				<sdk:DataGridTextColumn Header="DeltaSendCutoff" Binding="{Binding VideoQualityController.DeltaSendCutoff}" />
+				<sdk:DataGridTextColumn Header="JpegQuality" Binding="{Binding VideoQualityController.JpegQuality}" />
+				<sdk:DataGridTextColumn Header="Fidelity" Binding="{Binding Fidelity, StringFormat=##0.00}" />
+				<sdk:DataGridTextColumn Header="RawSize" Binding="{Binding RawSize, StringFormat=N0}" />
+				<sdk:DataGridTextColumn Header="EncodedSize" Binding="{Binding EncodedSize, StringFormat=N0}" />
+				<sdk:DataGridTextColumn Header="Compression" Binding="{Binding Compression, StringFormat=##0%}" />
+				<sdk:DataGridTextColumn Header="BlocksNotSent" Binding="{Binding BlocksNotSent, StringFormat=##0%}" />
+				<sdk:DataGridTextColumn Header="BlocksAsDelta" Binding="{Binding BlocksAsDelta, StringFormat=##0%}" />
+				<sdk:DataGridTextColumn Header="BlocksAsJpeg" Binding="{Binding BlocksAsJpeg, StringFormat=##0%}" />
+				<sdk:DataGridTextColumn Header="DeltaBlockSize" Binding="{Binding DeltaBlockSize, StringFormat=##0.00}" />
+				<sdk:DataGridTextColumn Header="JpegBlockSize" Binding="{Binding JpegBlockSize, StringFormat=##0.00}" />
+				<sdk:DataGridTextColumn Header="Kbps" Binding="{Binding Kbps}" />
+				<sdk:DataGridTemplateColumn Header="Check Results">
+					<sdk:DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal">
+								<Button x:Name="btnPlayResults" Content="Play" IsEnabled="{Binding KeepProcessedFrames}" Click="btnPlayResults_Click" Margin="2" />
+								<Button x:Name="btnSaveResults" Content="Save" IsEnabled="{Binding KeepProcessedFrames}" Click="btnSaveResults_Click" Margin="2"/>
+							</StackPanel>
+						</DataTemplate>
+					</sdk:DataGridTemplateColumn.CellTemplate>
+				</sdk:DataGridTemplateColumn>
+			</sdk:DataGrid.Columns>
+		</sdk:DataGrid>
+	</Grid>
+
+</navigation:Page>

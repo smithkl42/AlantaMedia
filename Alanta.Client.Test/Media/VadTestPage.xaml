@@ -1,0 +1,77 @@
+﻿<navigation:Page 
+	x:Class="Alanta.Client.Test.Media.VadTestPage" 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+	d:DesignWidth="640" d:DesignHeight="480"
+	xmlns:av="clr-namespace:Alanta.Client.UI.Desktop.Controls.AudioVisualizer;assembly=Alanta.Client.UI.Desktop"
+	Title="VadTestPage Page" 
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+	xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit">
+	<Grid x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="316*" />
+			<ColumnDefinition Width="76*" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="231" />
+		</Grid.RowDefinitions>
+		<TextBlock HorizontalAlignment="Center" Text="VAD test page" VerticalAlignment="Top" FontSize="20" Grid.Column="2" Margin="8,0,164,0" />
+		<TextBlock Grid.Row="1" HorizontalAlignment="Right"  Text="Audio source:" VerticalAlignment="Center" Margin="10" />
+		<ListBox Grid.Column="1" Grid.Row="1" MinHeight="20" HorizontalAlignment="Left" Name="listBoxAudioSources" VerticalAlignment="Center" Width="400" Margin="3,3,0,3" Grid.ColumnSpan="2">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding FriendlyName}" />
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<Button Content="Start test" Grid.Row="2" HorizontalAlignment="Right" Margin="0,10,10,0" Name="buttonStartTest" VerticalAlignment="Top" Width="80" Click="buttonStartTest_Click" Grid.RowSpan="4" />
+		<Button Content="Save to RAW" Grid.Row="2" HorizontalAlignment="Right" Margin="0,40,10,0" Name="buttonSaveDump" VerticalAlignment="Top" Width="80" Click="buttonSaveDump_Click" Grid.RowSpan="4" />
+		<TextBlock Text="Voice detected:" Grid.Column="1" Grid.Row="2" Margin="13,10,3,4" />
+		<TextBlock Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" Margin="3" FontWeight="Bold" Text="{Binding Path=VoiceDetected}" VerticalAlignment="Bottom" />
+
+		<TextBlock Text="RMS:" Grid.Column="1" Grid.Row="3" Margin="13,10,3,4" />
+		<ProgressBar Grid.Column="2" Grid.Row="3" Height="20" Minimum="0" Maximum="2" Value="{Binding Path=RMS}" Margin="5" />
+		<TextBlock Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left" Margin="3" Text="{Binding Path=RMS}" VerticalAlignment="Bottom" />
+
+		<TextBlock Text="Filtered RMS:" Grid.Column="1" Grid.Row="4" Margin="13,10,3,4" />
+		<ProgressBar Grid.Column="2" Grid.Row="4" Height="20" Minimum="0" Maximum="2" Value="{Binding Path=FilteredRMS}" Margin="5" />
+		<TextBlock Grid.Column="3" Grid.Row="4" HorizontalAlignment="Left" Margin="3" Text="{Binding Path=FilteredRMS}" VerticalAlignment="Bottom" />
+
+		<TextBlock Text="Background level:" Grid.Column="1" Grid.Row="5" Margin="13,10,3,4" />
+		<ProgressBar Grid.Column="2" Grid.Row="5" Height="20" Minimum="0" Maximum="2" Value="{Binding Path=BackgroundLevel}" Margin="5" />
+		<TextBlock Grid.Column="3" Grid.Row="5" HorizontalAlignment="Left" Margin="3" Text="{Binding Path=BackgroundLevel}" VerticalAlignment="Bottom" />
+
+		<TextBlock Text="Speech level:" Grid.Column="1" Grid.Row="6" Margin="13,10,3,4" />
+		<ProgressBar Grid.Column="2" Grid.Row="6" Height="20" Minimum="0" Maximum="2" Value="{Binding Path=SpeechLevel}" Margin="5" />
+		<TextBlock Grid.Column="3" Grid.Row="6" HorizontalAlignment="Left" Margin="3" Text="{Binding Path=SpeechLevel}" VerticalAlignment="Bottom" />
+
+
+		<TextBlock Text="Voiced probability:" Grid.Column="1" Grid.Row="7" Margin="13,10,3,4" />
+		<ProgressBar Grid.Column="2" Grid.Row="7" Height="20" Minimum="0" Maximum="1" Value="{Binding Path=VoicedProbability}" Margin="5" />
+		<TextBlock Grid.Column="3" Grid.Row="7" HorizontalAlignment="Left" Margin="3" Text="{Binding Path=VoicedProbability}" VerticalAlignment="Bottom" />
+
+		<TextBlock Text="Silence detector level:" Grid.Column="1" Grid.Row="8" Margin="13,10,3,4" />
+		<ProgressBar Grid.Column="2" Grid.Row="8" Height="20" Minimum="0" Maximum="1" Value="{Binding Path=SilenceDetectorLevel}" Margin="5" />
+		<TextBlock Grid.Column="3" Grid.Row="8" HorizontalAlignment="Left" Margin="3" Text="{Binding Path=SilenceDetectorLevel}" VerticalAlignment="Bottom" />
+
+		<TextBlock Text="Silence detected:" Grid.Column="1" Grid.Row="9" Margin="13,10,3,4" />
+		<TextBlock Grid.Column="2" Grid.Row="9" HorizontalAlignment="Left" Margin="3" FontWeight="Bold" Text="{Binding Path=SilenceDetected}" VerticalAlignment="Bottom" />
+		
+	</Grid>
+</navigation:Page>

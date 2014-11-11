@@ -1,0 +1,29 @@
+﻿<navigation:Page 
+	x:Class="Alanta.Client.Test.Media.MediaTest" 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:av="clr-namespace:Alanta.Client.UI.Desktop.Controls.AudioVisualizer;assembly=Alanta.Client.UI.Desktop"
+	xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation" 
+	xmlns:commonRoomView="clr-namespace:Alanta.Client.UI.Common.RoomView;assembly=Alanta.Client.UI.Common" mc:Ignorable="d"
+	d:DesignWidth="1000" d:DesignHeight="480"
+	Title="MediaTest Page">
+	<Grid x:Name="LayoutRoot">
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition Height="208"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		
+		<TextBlock FontSize="24" HorizontalAlignment="Center">Media Server Test - Not really working as of 5/22/12</TextBlock>
+
+		<StackPanel x:Name="sourceSessionStackPanel" Orientation="Horizontal" Grid.Row="1" >
+			<av:AudioVisualizer x:Name="audioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
+			<commonRoomView:LocalCamera x:Name="localCamera" Height="144" Width="216" Margin="4" />
+		</StackPanel>
+		<StackPanel x:Name="remoteSessionsStackPanel" Grid.Row="2" />
+
+	</Grid>
+</navigation:Page>

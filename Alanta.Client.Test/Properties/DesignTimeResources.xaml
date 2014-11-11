@@ -1,0 +1,11 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/Alanta.Client.UI.Desktop;component/ClientResources.xaml"/>
+		<ResourceDictionary Source="/Alanta.Client.UI.Desktop;component/Themes/generic.xaml"/>
+		<ResourceDictionary Source="/Alanta.Client.UI.Common;component/Themes/generic.xaml"/>
+		<ResourceDictionary Source="/Alanta.Client.Whiteboard;component/WhiteboardResources.xaml"/>
+	</ResourceDictionary.MergedDictionaries>
+	<!-- Resource dictionary entries should be defined here. -->
+</ResourceDictionary>
