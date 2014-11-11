@@ -1,0 +1,175 @@
+﻿<UserControl 
+    x:Class="Alanta.Client.Ui.Controls.AudioVisualizer.AudioVisualizer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    >
+    <UserControl.Resources>
+        <DataTemplate x:Key="VisualTypeItemDataTemplate">
+            <Grid>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Description, Mode=OneTime}"/>
+            </Grid>
+        </DataTemplate>
+        <Color x:Key="labelColour">#FF77A577</Color>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Border BorderThickness="1" BorderBrush="Blue" Margin="0,0,0,0" Padding="0">
+            <Canvas Height="400" Width="550">
+                <Image x:Name="outputImage" Stretch="None" Width="550" Height="400" Margin="0" d:LayoutOverrides="Width"/>
+                <StackPanel x:Name="fftScanHUD" Orientation="Vertical" Height="400" Margin="0" Canvas.Left="5" Visibility="Collapsed">
+                    <TextBlock Text="8000" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="4000" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="1000" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="750" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="500" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="375" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="250" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="155" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="80" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="30" TextWrapping="Wrap" FontSize="8" Height="39" Padding="0,28,0,0" TextAlignment="Right">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel x:Name="peakMeterHUD" Orientation="Horizontal" Margin="62,260,0,0" Visibility="Collapsed">
+                    <TextBlock Height="20" Text="30" TextWrapping="Wrap" Width="16" FontSize="8" TextAlignment="Center">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="55" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="80" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="120" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="155" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="195" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="250" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="375" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="500" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="750" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="1k" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" FontSize="8" Text="1.5k" TextAlignment="Center" TextWrapping="Wrap" Margin="8,0,0,0" Width="18">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="2k" TextAlignment="Center" TextWrapping="Wrap" Margin="8,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="3k" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="4k" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="6k" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="8k" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="12k" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Height="20" Width="16" FontSize="8" Text="16k" TextAlignment="Center" TextWrapping="Wrap" Margin="9,0,0,0">
+						<TextBlock.Foreground>
+							<SolidColorBrush Color="{StaticResource labelColour}"/>
+						</TextBlock.Foreground>
+                    </TextBlock>
+                </StackPanel>
+            </Canvas>
+        </Border>
+
+    </Grid>
+</UserControl>

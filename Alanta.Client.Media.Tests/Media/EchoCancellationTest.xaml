@@ -1,0 +1,71 @@
+﻿<navigation:Page 
+    x:Class="Alanta.Client.Test.Media.EchoCancellationTest" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:av="clr-namespace:Alanta.Client.UI.Desktop.Controls.AudioVisualizer;assembly=Alanta.Client.UI.Desktop"
+    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+    d:DesignWidth="640" d:DesignHeight="480"
+    Title="EchoCancellationTest Page" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+    <Grid x:Name="LayoutRoot" MaxWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+
+        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Enable Microphone" Grid.Row="0" />
+        <Button Grid.Column="1" Grid.Row="0" Content="Enable Microphone" Margin="5" x:Name="btnEnableMicrophone" Click="btnEnableMicrophone_Click" />
+
+        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Recording" Grid.Row="1" />
+        <Button Grid.Column="1" Grid.Row="1" Content="Start" Margin="5" x:Name="btnRecord" Click="btnRecord_Click" />
+
+        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="(Optional) Save Recorded Audio" Grid.Row="2" />
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+            <Button Grid.Column="1" Grid.Row="1" Content="Save" Margin="5" Width="50" x:Name="btnSave" Click="btnSave_Click" />
+            <Button Grid.Column="1" Grid.Row="1" Content="Save Shifted" Margin="5" Width="80" x:Name="btnSaveShifted" Click="btnSaveShifted_Click" />
+        </StackPanel>
+
+        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="(Optional) Open Recorded Audio" Grid.Row="3" />
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <Button Grid.Column="1" Content="Open" Margin="5" Width="50" x:Name="btnSelectPlaybackFile" Click="btnSelectPlaybackFile_Click" />
+            <TextBox x:Name="txtStatus" Margin="5" IsReadOnly="True" Width="320" />
+        </StackPanel>
+        
+        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Playback" Grid.Row="4" />
+        <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" >
+            <Button Content="Start" Margin="5" x:Name="btnPlay" Width="70" Click="btnPlay_Click" />
+            <CheckBox x:Name="chkPlayWithAEC" Content="Play with AEC" VerticalAlignment="Center" IsChecked="True" Margin="5" />
+            <CheckBox x:Name="chkSynchronize" Content="Synchronize Streams" VerticalAlignment="Center" IsChecked="True" Margin="5" />
+            <CheckBox 
+                x:Name="chkPlaySilently" Content="Play Silently" VerticalAlignment="Center" IsChecked="False" Margin="5" 
+                ToolTipService.ToolTip="If checked, will conduct AEC as fast as possible, for performance testing." />
+        </StackPanel>
+
+        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Playback Delay" Grid.Row="5" />
+        <TextBox Grid.Column="1" Grid.Row="5" Margin="10" x:Name="txtPlaybackDelay" Text="200" Width="70" HorizontalAlignment="Left"  />
+
+        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Expected Latency" Grid.Row="6" />
+        <TextBox Grid.Column="1" Grid.Row="6" Margin="10" x:Name="txtExpectedLatency" Text="0" Width="70" HorizontalAlignment="Left" />
+
+        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Tail Size" Grid.Row="7" />
+        <TextBox Grid.Column="1" Grid.Row="7" Margin="10" x:Name="txtTailSize" Text="3200" Width="70" HorizontalAlignment="Left" />
+
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <av:AudioVisualizer x:Name="inputAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
+            <av:AudioVisualizer x:Name="outputAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
+        </StackPanel>
+    </Grid>
+</navigation:Page>
