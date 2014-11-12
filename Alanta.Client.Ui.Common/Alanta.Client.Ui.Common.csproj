@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alanta.Client.Ui.Controls</RootNamespace>
-    <AssemblyName>Alanta.Client.Ui.Controls</AssemblyName>
+    <RootNamespace>Alanta.Client.Ui.Common</RootNamespace>
+    <AssemblyName>Alanta.Client.Ui.Common</AssemblyName>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -113,6 +113,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioVisualizer\AudioVisualizer.xaml.cs">
@@ -127,9 +128,16 @@
     <Compile Include="Cameras\RemoteCamera.xaml.cs">
       <DependentUpon>RemoteCamera.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Images\NoPhoto.xaml.cs">
+      <DependentUpon>NoPhoto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MediaDeviceConfig.cs" />
     <Compile Include="MediaDevices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\CommonStrings.Designer.cs" />
+    <Compile Include="Resources\CommonStringsPublic.cs" />
+    <Compile Include="Resources\ConstantsUIStrings.Designer.cs" />
+    <Compile Include="Resources\ConstantsUIStringsPublic.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="AudioVisualizer\AudioVisualizer.xaml">
@@ -141,6 +149,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Cameras\RemoteCamera.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CommonResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Images\NoPhoto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -156,7 +172,83 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\alanta_icon.pdn" />
+    <None Include="Images\MicrophoneWhite.pdn" />
+    <None Include="Images\WebcamWhite.pdn" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\CommonStrings.resx" />
+    <EmbeddedResource Include="Resources\ConstantsUIStrings.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\alanta_icon.png" />
+    <Resource Include="Images\alanta_icon_128x128.png" />
+    <Resource Include="Images\alanta_icon_16x16.png" />
+    <Resource Include="Images\alanta_icon_32x32.png" />
+    <Resource Include="Images\alanta_icon_48x48.png" />
+    <Resource Include="Images\alanta_icon_64x64.png" />
+    <Resource Include="Images\alanta_logo.png" />
+    <Resource Include="Images\aol.png" />
+    <Resource Include="Images\aol_bw.png" />
+    <Resource Include="Images\AppVisualState_Full.png" />
+    <Resource Include="Images\AppVisualState_Simple.png" />
+    <Resource Include="Images\AppVisualState_Vertical.png" />
+    <Resource Include="Images\close.png" />
+    <Resource Include="Images\connected_mail.png" />
+    <Resource Include="Images\contact_no_photo.jpg" />
+    <Resource Include="Images\email.png" />
+    <Resource Include="Images\email_bw.png" />
+    <Resource Include="Images\facebook.png" />
+    <Resource Include="Images\facebook_bw.png" />
+    <Resource Include="Images\folder.PNG" />
+    <Resource Include="Images\G711MCodec.png" />
+    <Resource Include="Images\gmail.png" />
+    <Resource Include="Images\gmail_bw.png" />
+    <Resource Include="Images\group.png" />
+    <Resource Include="Images\InfoBox.png" />
+    <Resource Include="Images\invitation.png" />
+    <Resource Include="Images\invite_icon.png" />
+    <Resource Include="Images\linkedin.png" />
+    <Resource Include="Images\linkedin_bw.png" />
+    <Resource Include="Images\MicrophoneDetailed.png" />
+    <Resource Include="Images\MicrophoneWhite.png" />
+    <Resource Include="Images\msaccessicon.png" />
+    <Resource Include="Images\msexcelicon.png" />
+    <Resource Include="Images\msn.png" />
+    <Resource Include="Images\msn_bw.png" />
+    <Resource Include="Images\msonenoteicon.png" />
+    <Resource Include="Images\mspowerpointicon.png" />
+    <Resource Include="Images\msvisioicon.png" />
+    <Resource Include="Images\mswordicon.png" />
+    <Resource Include="Images\myspace.png" />
+    <Resource Include="Images\myspace_bw.png" />
+    <Resource Include="Images\ok.png" />
+    <Resource Include="Images\plaxo.png" />
+    <Resource Include="Images\plaxo_bw.png" />
+    <Resource Include="Images\RawCodec.png" />
+    <Resource Include="Images\ShareDesktop.png" />
+    <Resource Include="Images\ShareDesktop_32x32.png" />
+    <Resource Include="Images\ShareDocument.png" />
+    <Resource Include="Images\ShareStatistics.png" />
+    <Resource Include="Images\ShareWhiteboard.png" />
+    <Resource Include="Images\share_icon.png" />
+    <Resource Include="Images\SpeexCodec.png" />
+    <Resource Include="Images\stop.png" />
+    <Resource Include="Images\tools.png" />
+    <Resource Include="Images\transfer.png" />
+    <Resource Include="Images\user.png" />
+    <Resource Include="Images\VideoQualityFallback.png" />
+    <Resource Include="Images\VideoQualityHigh.png" />
+    <Resource Include="Images\VideoQualityLow.png" />
+    <Resource Include="Images\VideoQualityMedium.png" />
+    <Resource Include="Images\webcam.png" />
+    <Resource Include="Images\WebcamDetailed.png" />
+    <Resource Include="Images\WebcamWhite.png" />
+    <Resource Include="Images\webcam_disable.png" />
+    <Resource Include="Images\yahoo.png" />
+    <Resource Include="Images\yahoo_bw.png" />
+    <Content Include="Resources\MediaDevicePriority.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions>

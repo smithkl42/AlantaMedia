@@ -7,10 +7,12 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 using Alanta.Client.Common;
+using Alanta.Client.Common.Loader;
 using Alanta.Client.Common.Logging;
 using Alanta.Client.Media;
+using Alanta.Client.UI.Common.Resources;
 
-namespace Alanta.Client.Ui.Controls
+namespace Alanta.Client.Ui.Common
 {
 	/// <summary>
 	/// Manages the configuration and control of local media devices (e.g., webcam and microphone), and allows them
@@ -56,6 +58,7 @@ namespace Alanta.Client.Ui.Controls
 		public event EventHandler<EventArgs<bool, bool>> CaptureFailed;
 		public readonly MediaDeviceList<AudioCaptureDevice> PossibleAudioDevices;
 		public readonly MediaDeviceList<VideoCaptureDevice> PossibleVideoDevices;
+        public IMessageService MessageService { get; set; }
 		#endregion
 
 		#region Methods
@@ -115,11 +118,11 @@ namespace Alanta.Client.Ui.Controls
 			catch (Exception ex)
 			{
 				ClientLogger.ErrorException(ex, "Error updating captured devices");
-				MessageService.Instance.ShowErrorHint(ex.Message);
+				MessageService.ShowErrorHint(ex.Message);
 			}
 		}
 
-		private static void ConfigureAudioCaptureDevice(AudioCaptureDevice device)
+		private void ConfigureAudioCaptureDevice(AudioCaptureDevice device)
 		{
 			// Set the audio properties.
 			if (device != null)
@@ -129,7 +132,7 @@ namespace Alanta.Client.Ui.Controls
 				if (device.DesiredFormat == null)
 				{
 					ClientLogger.Error(CommonStrings.Media_NoAudioFormat);
-					MessageService.Instance.ShowErrorHint(CommonStrings.Media_NoAudioFormat);
+					MessageService.ShowErrorHint(CommonStrings.Media_NoAudioFormat);
 				}
 			}
 			else
@@ -139,12 +142,12 @@ namespace Alanta.Client.Ui.Controls
 				if (audioDevices.Count == 0)
 				{
 					ClientLogger.Debug(CommonStrings.Media_NoAudioDevice);
-					MessageService.Instance.ShowErrorHint(CommonStrings.Media_NoAudioDevice);
+					MessageService.ShowErrorHint(CommonStrings.Media_NoAudioDevice);
 				}
 			}
 		}
 
-		private static void ConfigureVideoCaptureDevice(VideoCaptureDevice device)
+		private void ConfigureVideoCaptureDevice(VideoCaptureDevice device)
 		{
 			// Configure the video capture device.
 			// The weird thing about this is that sometimes (at least on a Macintosh), a video capture device
@@ -163,7 +166,7 @@ namespace Alanta.Client.Ui.Controls
 					if (Environment.OSVersion.Platform != PlatformID.MacOSX)
 					{
 						ClientLogger.Error(CommonStrings.Media_NoVideoFormat);
-						MessageService.Instance.ShowErrorHint(CommonStrings.Media_NoVideoFormat);
+						MessageService.ShowErrorHint(CommonStrings.Media_NoVideoFormat);
 					}
 				}
 			}
@@ -174,7 +177,7 @@ namespace Alanta.Client.Ui.Controls
 				if (videoDevices.Count == 0)
 				{
 					ClientLogger.Debug(CommonStrings.Media_NoVideoDevice);
-					MessageService.Instance.ShowErrorHint(CommonStrings.Media_NoVideoDevice);
+					MessageService.ShowErrorHint(CommonStrings.Media_NoVideoDevice);
 				}
 			}
 		}

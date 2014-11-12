@@ -1,15 +1,15 @@
 ﻿<UserControl 
-	x:Class="Alanta.Client.UI.Common.RoomView.RemoteCamera"
+	x:Class="Alanta.Client.Ui.Common.Cameras.RemoteCamera"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:commonImages="clr-namespace:Alanta.Client.UI.Common.Images;assembly=Alanta.Client.UI.Common"
-	xmlns:local="clr-namespace:Alanta.Client.UI.Common.RoomView" mc:Ignorable="d" d:DesignHeight="144" d:DesignWidth="216">
+	xmlns:images="clr-namespace:Alanta.Client.UI.Common.Images"
+	mc:Ignorable="d" d:DesignHeight="144" d:DesignWidth="216">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Alanta.Client.UI.Common;component/CommonResources.xaml" />
+                <ResourceDictionary Source="/Alanta.Client.Ui.Common;component/CommonResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="TextLabelStyle" TargetType="TextBlock">
                 <Setter Property="HorizontalAlignment" Value="Right" />
@@ -28,57 +28,6 @@
             <RectangleGeometry x:Name="videoRectGeometry" />
         </Grid.Clip>
         <Grid >
-            <ToolTipService.ToolTip>
-                <Grid Visibility="{Binding LocalUserVm.IsAdministrator, Converter={StaticResource boolToVisibilityConverter}}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding Resource.UserIdAndColon, Source={StaticResource commonStrings}}" Grid.Row="0" Style="{StaticResource TextLabelStyle}" />
-                    <TextBlock Text="{Binding UserVm.Model.UserTag}" Grid.Row="0" Grid.Column="1" Style="{StaticResource TextValueStyle}" />
-
-                    <TextBlock Text="{Binding Resource.NameColon, Source={StaticResource commonStrings}}" Grid.Row="1" Style="{StaticResource TextLabelStyle}" />
-                    <TextBlock Text="{Binding UserVm.Model.UserName}" Grid.Column="1" Grid.Row="1" Style="{StaticResource TextValueStyle}" />
-
-                    <TextBlock Text="{Binding Resource.ConnectedColon, Source={StaticResource commonStrings}}" Grid.Row="2" Style="{StaticResource TextLabelStyle}" />
-                    <TextBlock Text="{Binding Model.CreatedOn, Converter={StaticResource localTimeConverter}}" Grid.Column="1" Grid.Row="2" Style="{StaticResource TextValueStyle}" />
-
-                    <TextBlock Text="Location:" Grid.Row="3" Style="{StaticResource TextLabelStyle}" />
-                    <TextBlock Text="{Binding Location}" Grid.Column="1" Grid.Row="3" Style="{StaticResource TextValueStyle}" />
-
-                    <TextBlock Text="Source:" Grid.Row="4" Style="{StaticResource TextLabelStyle}" />
-                    <TextBlock Text="{Binding DocumentUriHost}" Grid.Column="1" Grid.Row="4" Style="{StaticResource TextValueStyle}" />
-
-                    <TextBlock Text="Elapsed Time:" Grid.Row="5" Style="{StaticResource TextLabelStyle}" />
-                    <TextBlock Text="{Binding ElapsedTime, StringFormat='hh:mm:ss'}" Grid.Column="1" Grid.Row="5" Style="{StaticResource TextValueStyle}" />
-
-                    <TextBlock Text="SessionId:" Grid.Row="6" Style="{StaticResource TextLabelStyle}" />
-                    <TextBlock Text="{Binding Model.SessionId}" Grid.Column="1" Grid.Row="6" Style="{StaticResource TextValueStyle}" />
-
-                    <TextBlock Text="SsrcId:" Grid.Row="7" Style="{StaticResource TextLabelStyle}" />
-                    <TextBlock Text="{Binding Model.SsrcId}" Grid.Column="1" Grid.Row="7" Style="{StaticResource TextValueStyle}" />
-
-                </Grid>
-            </ToolTipService.ToolTip>
-
-            <local:RemoteSessionControl 
-				x:Name="remoteSessionControl" 
-				Canvas.ZIndex="50000" 
-				Visibility="Collapsed" 
-				VerticalAlignment="Top" 
-				HorizontalAlignment="Center" />
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -94,17 +43,6 @@
 
                 <!-- Row 2 -->
                 <MediaElement x:Name="mediaElement" Grid.Row="2" Visibility="{Binding VideoVisibility}" />
-                <Grid x:Name="grdAvatarView" Grid.Row="2" Visibility="{Binding AvatarVisibility}" >
-                    <Image x:Name="imgAvatar" Stretch="Uniform" />
-                    <Grid x:Name="imgNoAvatar">
-                        <commonImages:NoPhoto />
-                        <Viewbox Margin="5" MaxWidth="350" MaxHeight="180">
-                            <TextBlock 
-                                Text="{Binding UserVm.Model, Converter={StaticResource userNameConverter}}" 
-                                TextWrapping="Wrap" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Viewbox>
-                    </Grid>
-                </Grid>
             </Grid>
         </Grid>
     </Grid>

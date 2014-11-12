@@ -8,8 +8,9 @@ using Alanta.Client.Common;
 using Alanta.Client.Common.Loader;
 using Alanta.Client.Common.Logging;
 using Alanta.Client.Media;
+using Alanta.Client.Ui.Controls;
 
-namespace Alanta.Client.Ui.Controls.Cameras
+namespace Alanta.Client.Ui.Common.Cameras
 {
     public partial class LocalCamera : UserControl
     {

@@ -3,354 +3,320 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	xmlns:roomView="clr-namespace:Alanta.Client.UI.Common.RoomView" 
-	xmlns:commonControls="clr-namespace:Alanta.Client.UI.Common.Controls" 
-	xmlns:System="clr-namespace:System;assembly=mscorlib"
-	xmlns:converters="clr-namespace:Alanta.Client.UI.Common.Converters"
-	xmlns:resources="clr-namespace:Alanta.Client.UI.Common.Resources"
-	x:Class="Alanta.Client.Ui.Controls.Cameras.LocalCamera" Background="White"
+	x:Class="Alanta.Client.Ui.Common.Cameras.LocalCamera" Background="White"
 	mc:Ignorable="d" d:DesignHeight="144" d:DesignWidth="216">
-	<UserControl.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="/Alanta.Client.UI.Common;component/CommonResources.xaml" />
-			</ResourceDictionary.MergedDictionaries>
-			<resources:CommonStringsPublic x:Key="commonStrings" />
-			<converters:CodecToIconConverter x:Key="codecToIconConverter" />
-			<converters:SpeechEnhancementToIconConverter x:Key="speechEnhancementToIconConverter" />
-			<Storyboard x:Name="ButtonsZoomStoryboard" RepeatBehavior="2x" >
-				<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="btnCaptureMicrophone">
-					<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.1"/>
-					<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
-				</DoubleAnimationUsingKeyFrames>
-				<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="btnCaptureMicrophone">
-					<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.1"/>
-					<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
-				</DoubleAnimationUsingKeyFrames>
-				<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)" Storyboard.TargetName="btnCaptureMicrophone">
-					<EasingColorKeyFrame KeyTime="0:0:0.5" Value="DarkBlue" />
-					<EasingColorKeyFrame KeyTime="0:0:1.0" Value="#FF1F3B53" />
-				</ColorAnimationUsingKeyFrames>
-				<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="btnCaptureWebCam">
-					<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1.1"/>
-					<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
-				</DoubleAnimationUsingKeyFrames>
-				<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="btnCaptureWebCam">
-					<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1.1"/>
-					<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
-				</DoubleAnimationUsingKeyFrames>
-				<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)" Storyboard.TargetName="btnCaptureWebCam">
-					<EasingColorKeyFrame KeyTime="0:0:1.4" Value="DarkBlue" />
-					<EasingColorKeyFrame KeyTime="0:0:2.0" Value="#FF1F3B53" />
-				</ColorAnimationUsingKeyFrames>
-			</Storyboard>
-		</ResourceDictionary>
-	</UserControl.Resources>
-	<!-- ks 1/23/12 - You need the "Transparent" background, or else the MouseEnter/MouseLeave events won't fire correctly. Huh. -->
-	<Grid 
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Storyboard x:Name="ButtonsZoomStoryboard" RepeatBehavior="2x" >
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="btnCaptureMicrophone">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="btnCaptureMicrophone">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)" Storyboard.TargetName="btnCaptureMicrophone">
+                    <EasingColorKeyFrame KeyTime="0:0:0.5" Value="DarkBlue" />
+                    <EasingColorKeyFrame KeyTime="0:0:1.0" Value="#FF1F3B53" />
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="btnCaptureWebCam">
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1.1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="btnCaptureWebCam">
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1.1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)" Storyboard.TargetName="btnCaptureWebCam">
+                    <EasingColorKeyFrame KeyTime="0:0:1.4" Value="DarkBlue" />
+                    <EasingColorKeyFrame KeyTime="0:0:2.0" Value="#FF1F3B53" />
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- ks 1/23/12 - You need the "Transparent" background, or else the MouseEnter/MouseLeave events won't fire correctly. Huh. -->
+    <Grid 
 		x:Name="LayoutRoot" 
-		Background="Transparent"
-		MouseEnter="LayoutRoot_MouseEnter" MouseLeave="LayoutRoot_MouseLeave" >
-		<VisualStateManager.VisualStateGroups>
-			<VisualStateGroup x:Name="VisualStateGroup">
-				<VisualStateGroup.Transitions>
-					<VisualTransition GeneratedDuration="0" To="Progress"/>
-				</VisualStateGroup.Transitions>
-				<VisualState x:Name="Default">
-				</VisualState>
-				<VisualState x:Name="AudioNoImage">
-					<Storyboard>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="presencePanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Visible</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnSelectAvatar">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Visible</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-					</Storyboard>
-				</VisualState>
-				<VisualState x:Name="AudioAndImage">
-					<Storyboard>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="presencePanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Visible</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imgAvatar">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Visible</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-					</Storyboard>
-				</VisualState>
-				<VisualState x:Name="Video">
-					<Storyboard>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="presencePanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Visible</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="videoCapture">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Visible</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-					</Storyboard>
-				</VisualState>
-				<VisualState x:Name="Progress">
-					<Storyboard>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="progressBar">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Visible</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(ProgressSplashBar.IsStarted)" Storyboard.TargetName="progressBar">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<System:Boolean>True</System:Boolean>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-					</Storyboard>
-				</VisualState>
-				<VisualState x:Name="MediaNotRecommended">
-					<Storyboard>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="presencePanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="videoCapture">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Collapsed</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<Visibility>Visible</Visibility>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-					</Storyboard>
-				</VisualState>
-			</VisualStateGroup>
-		</VisualStateManager.VisualStateGroups>
+		Background="Transparent" >
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0" To="Progress"/>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="Default">
+                </VisualState>
+                <VisualState x:Name="AudioNoImage">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="presencePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnSelectAvatar">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="AudioAndImage">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="presencePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imgAvatar">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Video">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="presencePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="videoCapture">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Progress">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="progressBar">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="MediaNotRecommended">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="capturePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="presencePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="videoCapture">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="mediaNotRecommendedPanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
-		<!-- The capture panel contains the controls that should be displayed BEFORE the user has authorized the microphone/webcam -->
-		<StackPanel x:Name="capturePanel" HorizontalAlignment="Center" VerticalAlignment="Center">
-			<TextBlock 
+        <!-- The capture panel contains the controls that should be displayed BEFORE the user has authorized the microphone/webcam -->
+        <StackPanel x:Name="capturePanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock 
 				TextWrapping="Wrap" TextAlignment="Center" Margin="4" FontSize="12"
 				Text="{Binding CapturePanelMessage}" />
-			<StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-				<Button 
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Button 
 					x:Name="btnCaptureMicrophone" Margin="4" FontWeight="Bold" Height="40" Width="190" Click="btnCaptureMicrophone_Click"
-					RenderTransformOrigin="0.5,0.5" Style="{StaticResource CaptureButtonStyleBlue}" HorizontalContentAlignment="Center" 
+					RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Center" 
 					Visibility="{Binding MicrophoneButtonVisibility}"
 					ToolTipService.ToolTip="Click here to enable your microphone, so other folks can hear you">
-					<Button.RenderTransform>
-						<CompositeTransform />
-					</Button.RenderTransform>
-					<!--<toolkit:WrapPanel x:Name="captureMicrophonePanel" />-->
-					<StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
-						<Image 
+                    <Button.RenderTransform>
+                        <CompositeTransform />
+                    </Button.RenderTransform>
+                    <!--<toolkit:WrapPanel x:Name="captureMicrophonePanel" />-->
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
+                        <Image 
 							Height="26" Width="26" HorizontalAlignment="Center" 
-							Source="/Alanta.Client.UI.Common;component/Images/MicrophoneWhite.png" />
-						<TextBlock 
+							Source="/Alanta.Client.Ui.Common;component/Images/MicrophoneWhite.png" />
+                        <TextBlock 
 							Margin="4" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center"
 							Text="{Binding Resource.StartMicrophone, Source={StaticResource commonStrings}}" Foreground="White" FontFamily="Helvetica" />
-					</StackPanel>
-				</Button>
-				<Button 
+                    </StackPanel>
+                </Button>
+                <Button 
 					x:Name="btnCaptureWebCam" Margin="4" FontWeight="Bold" Height="40" Width="190" Click="btnCaptureWebCam_Click"
-					Style="{StaticResource CaptureButtonStyleGreen}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"
+					HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"
 					RenderTransformOrigin="0.5,0.5" 
 					Visibility="{Binding WebcamButtonVisibility}"
 					ToolTipService.ToolTip="Click here to enable your webcam and your microphone, so other folks can see and hear you">
-					<Button.RenderTransform>
-						<CompositeTransform/>
-					</Button.RenderTransform>
-					<StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
-						<Image 
+                    <Button.RenderTransform>
+                        <CompositeTransform/>
+                    </Button.RenderTransform>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
+                        <Image 
 							Height="26" Width="26" HorizontalAlignment="Center"
-							Source="/Alanta.Client.UI.Common;component/Images/WebcamWhite.png" />
-						<TextBlock 
+							Source="/Alanta.Client.Ui.Controls;component/Images/WebcamWhite.png" />
+                        <TextBlock 
 							Margin="4" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Helvetica"
 							Text="{Binding Resource.StartWebcam, Source={StaticResource commonStrings}}" Foreground="White" />
-					</StackPanel>
-				</Button>
-			</StackPanel>
-		</StackPanel>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
 
-		<!-- The presence panel contains the controls that should be displayed AFTER the user has authorized the microphone/webcam -->
-		<Grid x:Name="presencePanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed">
-			<Button x:Name="btnSelectAvatar" Margin="4" FontWeight="Bold" Height="40" Width="130" Click="btnSelectAvatar_Click"
-					Style="{StaticResource ButtonGrayStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
-				<Button.Foreground>
-					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-						<GradientStop Color="#FF151414" Offset="0" />
-						<GradientStop Color="#FF8B8B8B" Offset="1" />
-					</LinearGradientBrush>
-				</Button.Foreground>
-				<TextBlock Text="{Binding Resource.SelectAvatar, Source={StaticResource commonStrings}}" TextWrapping="Wrap" TextAlignment="Center" />
-			</Button>
+        <!-- The presence panel contains the controls that should be displayed AFTER the user has authorized the microphone/webcam -->
+        <Grid x:Name="presencePanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed">
 
-			<Rectangle x:Name="videoCapture" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RadiusX="5" RadiusY="5" Visibility="Collapsed"  />
-			<ProgressBar Visibility="Collapsed" Style="{StaticResource AudioProgressBarStyle}" Value="50" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" />
-			<Image x:Name="imgAvatar" Height="134" Width="200" Stretch="Uniform"  Visibility="Collapsed" />
-			<commonControls:DebugViewer>
-				<StackPanel 
+            <Rectangle x:Name="videoCapture" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RadiusX="5" RadiusY="5" Visibility="Collapsed"  />
+            <ProgressBar Visibility="Collapsed" Style="{StaticResource AudioProgressBarStyle}" Value="50" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" />
+            <Image x:Name="imgAvatar" Height="134" Width="200" Stretch="Uniform"  Visibility="Collapsed" />
+            <StackPanel 
 					x:Name="panelAvQuality" 
 					Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Canvas.ZIndex="100" 
 					DataContext="{Binding MediaController}">
-					<Image 
+                <Image 
 					x:Name="imgVideoQuality"
 					Height="24" Width="24" Margin="4" 
 					Source="{Binding VideoQualityController.LocalVideoQualityImage}" 
 					ToolTipService.ToolTip="{Binding VideoQualityController.LocalVideoQuality, StringFormat='Video Quality:{0}'}" />
-					<Image 
+                <Image 
 					x:Name="speechEnhancementQuality"
 					Height="24" Width="24" Margin="4" 
 					Source="{Binding LastSpeechEnhancementName, Converter={StaticResource speechEnhancementToIconConverter}}" 
 					ToolTipService.ToolTip="{Binding LastSpeechEnhancementName, StringFormat='Speech Enhancement Quality:{0}'}" />
-					<Image
+                <Image
 					x:Name="imgLastEncoder"
 					Height="24" Width="24" Margin="4"
 					Source="{Binding LastAudioEncoder, Converter={StaticResource codecToIconConverter}}" 
 					ToolTipService.ToolTip="{Binding LastAudioEncoder, StringFormat='Encoder:{0}'}"/>
-					<Image
+                <Image
 					x:Name="imgLastDecoder"
 					Height="24" Width="24" Margin="4"
 					Source="{Binding LastAudioDecoder, Converter={StaticResource codecToIconConverter}}"
 					ToolTipService.ToolTip="{Binding LastAudioDecoder, StringFormat='Decoder:{0}'}"/>
-				</StackPanel>
-			</commonControls:DebugViewer>
-		</Grid>
+            </StackPanel>
+        </Grid>
 
-		<!-- The progress splash bar is displayed during period when the user is attempting to begin capturing their webcam/microphone -->
-		<commonControls:ProgressSplashBar x:Name="progressBar" Width="90" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" />
-		
-		<StackPanel x:Name="mediaNotRecommendedPanel" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
-			<RichTextBox 
+        <StackPanel x:Name="mediaNotRecommendedPanel" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <RichTextBox 
 				TextAlignment="Center" TextWrapping="Wrap" FontSize="12" IsReadOnly="True" Margin="4"
 				VerticalScrollBarVisibility="Disabled" BorderThickness="0">
-				<Paragraph>
-					<Run Text="It appears that your computer won't support audio and video very well. If you'd still like to try, click" />
-					<InlineUIContainer>
-						<HyperlinkButton x:Name="btnDisplayCapturePanel" Content="here." Click="btnDisplayCapturePanel_Click" VerticalAlignment="Center" >
-							<!-- This transform is inexplicably necessary to align it correctly. Weird. -->
-							<HyperlinkButton.RenderTransform>
-								<TranslateTransform Y="5" />
-							</HyperlinkButton.RenderTransform>
-						</HyperlinkButton>
-					</InlineUIContainer>
-				</Paragraph>
-			</RichTextBox>
-		</StackPanel>
-		
-		<!-- The muted icons panel is displayed when the mouse is NOT in the control and one or more of the devices has been muted -->
-		<StackPanel 
+                <Paragraph>
+                    <Run Text="It appears that your computer won't support audio and video very well. If you'd still like to try, click" />
+                    <InlineUIContainer>
+                        <HyperlinkButton x:Name="btnDisplayCapturePanel" Content="here." Click="btnDisplayCapturePanel_Click" VerticalAlignment="Center" >
+                            <!-- This transform is inexplicably necessary to align it correctly. Weird. -->
+                            <HyperlinkButton.RenderTransform>
+                                <TranslateTransform Y="5" />
+                            </HyperlinkButton.RenderTransform>
+                        </HyperlinkButton>
+                    </InlineUIContainer>
+                </Paragraph>
+            </RichTextBox>
+        </StackPanel>
+
+        <!-- The muted icons panel is displayed when the mouse is NOT in the control and one or more of the devices has been muted -->
+        <StackPanel 
 			x:Name="mutedIconsPanel" 
 			Orientation="Vertical" Margin="0,3,0,0" Width="27" HorizontalAlignment="Right" Visibility="Collapsed" 
 			DataContext="{Binding MediaController}">
-			<Grid x:Name="audioMuted" HorizontalAlignment="Right" VerticalAlignment="Top" Width="17"
+            <Grid x:Name="audioMuted" HorizontalAlignment="Right" VerticalAlignment="Top" Width="17"
 					ToolTipService.ToolTip="{Binding Resource.MicrophoneMuted,	Source={StaticResource commonStrings}}"
 					Visibility="{Binding IsMicrophoneMuted,	Converter={StaticResource boolToVisibilityConverter}}">
-				<Path HorizontalAlignment="Left" Stretch="Fill"
+                <Path HorizontalAlignment="Left" Stretch="Fill"
 							Fill="Black" Data="F1 M 23.1457,26.5056L 23.1457,33.8944L 25.7913,33.8944L 28.8235,37.4722L 30.5346,37.4722L 30.5665,23.0833L 28.8995,23.0833L 25.8679,26.5056L 23.1457,26.5056 Z "
 							Width="7.421" Height="14.389" UseLayoutRounding="False" />
-				<Image Source="/Alanta.Client.UI.Common;component/Images/close.png" Stretch="Fill" Width="12" Height="12" Margin="0" />
-			</Grid>
-			<Grid x:Name="videoMuted"
+                <Image Source="/Alanta.Client.UI.Common;component/Images/close.png" Stretch="Fill" Width="12" Height="12" Margin="0" />
+            </Grid>
+            <Grid x:Name="videoMuted"
 					ToolTipService.ToolTip="{Binding Resource.WebcamMuted, Source={StaticResource commonStrings}}"
 					Visibility="{Binding IsLocalWebcamMuted, Converter={StaticResource boolToVisibilityConverter}}">
-				<Image Source="/Alanta.Client.UI.Common;component/Images/webcam_disable.png" Stretch="Fill" />
-			</Grid>
-		</StackPanel>
+                <Image Source="/Alanta.Client.UI.Common;component/Images/webcam_disable.png" Stretch="Fill" />
+            </Grid>
+        </StackPanel>
 
-	</Grid>
+    </Grid>
 </UserControl>

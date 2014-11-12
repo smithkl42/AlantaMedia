@@ -1,0 +1,16 @@
+﻿<UserControl 
+    x:Class="Alanta.Client.UI.Common.Images.NoPhoto"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <Grid x:Name="LayoutRoot" Background="#FFFAFAFA">
+        <Path Stretch="Uniform"  StrokeThickness="0.333333" Margin="0,2,0,0"
+                      StrokeLineJoin="Round" Stroke="#FFB3B3B4" Fill="#FFEAEAEA"
+                      Data="F1 M 114.94,98.1867L 114.94,84.732C 114.94,84.732 115.708,79.1587 101.102,74.3533C 86.4951,69.548 76.6925,65.5134 75.5391,64.36C 74.3885,63.208 70.7351,59.5547 70.7351,56.288C 70.7351,53.02 70.8325,49.272 74.3885,45.716C 77.9431,42.1614 78.2325,37.4534 78.2325,28.9974L 78.2325,14.7734C 78.2325,14.7734 76.6925,5.93335 70.7351,3.04935C 64.7778,0.166687 57.6645,0.166687 57.6645,0.166687L 57.4471,0.166687C 57.4471,0.166687 50.3338,0.166687 44.3751,3.04935C 38.4165,5.93335 36.8805,14.7734 36.8805,14.7734L 36.8805,28.9974C 36.8805,37.4534 37.1671,42.1614 40.7245,45.716C 44.2791,49.272 44.3751,53.02 44.3751,56.288C 44.3751,59.5547 40.7245,63.208 39.5711,64.36C 38.4165,65.5134 28.6151,69.548 14.0098,74.3533C -0.596861,79.1587 0.171138,84.732 0.171138,84.732L 0.171138,98.1867"/>
+
+    </Grid>
+</UserControl>

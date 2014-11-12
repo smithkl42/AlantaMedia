@@ -7,10 +7,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media;
+using System.Xml.Linq;
 using Alanta.Client.Common.Logging;
 using Alanta.Client.Media;
 
-namespace Alanta.Client.Ui.Controls
+namespace Alanta.Client.Ui.Common
 {
 	public class MediaDeviceConfig
 	{

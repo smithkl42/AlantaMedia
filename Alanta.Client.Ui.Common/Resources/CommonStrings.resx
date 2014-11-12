@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GetAll" xml:space="preserve">
+    <value>Get All</value>
+  </data>
+  <data name="NoChatMessagesYet" xml:space="preserve">
+    <value>No chat messages yet</value>
+  </data>
+  <data name="ShowAllMessages" xml:space="preserve">
+    <value>Show all messages</value>
+  </data>
+  <data name="ErrorGetVolumeFailed" xml:space="preserve">
+    <value>GetVolume operation failed.</value>
+  </data>
+  <data name="ErrorMediaControllerUnavailable" xml:space="preserve">
+    <value>The local media controller is not available.</value>
+  </data>
+  <data name="ErrorMessageBoxCaption" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorMuteOperationFailed" xml:space="preserve">
+    <value>Mute operation failed.</value>
+  </data>
+  <data name="ErrorSetVolumeFailed" xml:space="preserve">
+    <value>SetVolume operation failed.</value>
+  </data>
+  <data name="ErroUnmuteOperationFailed" xml:space="preserve">
+    <value>Unmute operation failed.</value>
+  </data>
+  <data name="ServerMessageProcessingGenericError" xml:space="preserve">
+    <value>An error occurred processing a message from the server: {0}.  The error has been logged, and we'll try to get it fixed.</value>
+  </data>
+  <data name="ContactsToolTipEmail" xml:space="preserve">
+    <value>Invite a friend to this meeting via email</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Initialization" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="UnableToConnectToAudioServer" xml:space="preserve">
+    <value>Unable to connect to the audio server.</value>
+  </data>
+  <data name="Fill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="ZoomDescription" xml:space="preserve">
+    <value>Specify zoom level of the document</value>
+  </data>
+  <data name="SetFocus" xml:space="preserve">
+    <value>Set Focus</value>
+  </data>
+  <data name="SetFocusDescription" xml:space="preserve">
+    <value>All users will be navigated to this window</value>
+  </data>
+  <data name="SessionExpired" xml:space="preserve">
+    <value>Your session has expired.</value>
+  </data>
+  <data name="FacebookDeliveryPermissionsRequired" xml:space="preserve">
+    <value>Sending Facebook invitations requires additional permissions.</value>
+  </data>
+  <data name="DesktopSharing_BrowserNotSupportedFormat" xml:space="preserve">
+    <value>We don't yet support sharing your desktop from {0}.</value>
+  </data>
+  <data name="DesktopSharing_UnableToCreateObject" xml:space="preserve">
+    <value>We were unable to create the ActiveX object required to share your desktop.</value>
+  </data>
+  <data name="DesktopSharing_InitializationInProgress" xml:space="preserve">
+    <value>Initialization is already in progress.</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details:</value>
+  </data>
+  <data name="DetailsNotExist" xml:space="preserve">
+    <value>Details don't exist</value>
+  </data>
+  <data name="DesktopSharing_NotInstalled" xml:space="preserve">
+    <value>The desktop sharing control does not appear to be installed.</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="Room" xml:space="preserve">
+    <value>Room</value>
+  </data>
+  <data name="VncError" xml:space="preserve">
+    <value>Screen sharing error:</value>
+  </data>
+  <data name="DesktopSharing_AnotherInstanceRunned" xml:space="preserve">
+    <value>Another instance of VNC desktop sharing is already running, and only one instance at a time is supported.</value>
+  </data>
+  <data name="DesktopSharing_VncCreatedInitFailed" xml:space="preserve">
+    <value>The desktop sharing control was created, but initialization failed.</value>
+  </data>
+  <data name="DesktopSharing_VncYetNotCreated" xml:space="preserve">
+    <value>The desktop sharing control was not successfully created.</value>
+  </data>
+  <data name="DesktopSharing_VersionIsObsolete" xml:space="preserve">
+    <value>The installed version of the desktop sharing control is obsolete; you will need to update it.</value>
+  </data>
+  <data name="NavigationFailed" xml:space="preserve">
+    <value>The attempt to navigate to a new page failed.</value>
+  </data>
+  <data name="RoomTitleEmpty" xml:space="preserve">
+    <value>Room Page </value>
+  </data>
+  <data name="RoomTitleRegisteredDefault" xml:space="preserve">
+    <value>Default room of {0} </value>
+  </data>
+  <data name="RoomTitleRegisteredSpecified" xml:space="preserve">
+    <value>Room {0} of {1} </value>
+  </data>
+  <data name="UnableSendChatMsg" xml:space="preserve">
+    <value>Unable to send chat message: </value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="TypeSomething" xml:space="preserve">
+    <value>type something</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="AddDocument" xml:space="preserve">
+    <value>Add Document</value>
+  </data>
+  <data name="AddScreen" xml:space="preserve">
+    <value>Add Screen</value>
+  </data>
+  <data name="AddWebsite" xml:space="preserve">
+    <value>Add Website</value>
+  </data>
+  <data name="AddWhiteboard" xml:space="preserve">
+    <value>Add Whiteboard</value>
+  </data>
+  <data name="Screen" xml:space="preserve">
+    <value>Screen</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="Whiteboard" xml:space="preserve">
+    <value>Whiteboard</value>
+  </data>
+  <data name="SharedDesktop" xml:space="preserve">
+    <value>Shared Desktop</value>
+  </data>
+  <data name="SharedFile_MaximumFileSize" xml:space="preserve">
+    <value>Maximum file size is: </value>
+  </data>
+  <data name="SharedFile_FullScreenNotSupportOpenFile" xml:space="preserve">
+    <value>For security reasons, Silverlight doesn't let you open files in full-screen mode.</value>
+  </data>
+  <data name="SharedFile_WrongFileFilterConfig" xml:space="preserve">
+    <value>The wrong filter configuration was supplied.</value>
+  </data>
+  <data name="SharedDesktop_FailedToRegister" xml:space="preserve">
+    <value>An error occurred registering your shared desktop: {0}</value>
+  </data>
+  <data name="SharedDesktop_FailedToUnregister" xml:space="preserve">
+    <value>An error occurred unregistering your shared desktop: {0}</value>
+  </data>
+  <data name="SharedDesktop_FailedToShare" xml:space="preserve">
+    <value>An error occurred sharing your deskop.  This might have been caused by a failure to connect to the proxy server.  The actual message was: {0}</value>
+  </data>
+  <data name="SharedDesktop_ReinitSucceed" xml:space="preserve">
+    <value>Desktop sharing reinitialized successfully. You can try again to start sharing desktop.</value>
+  </data>
+  <data name="SharedDesktop_RecommendUpdateFormat" xml:space="preserve">
+    <value>You haven't installed the latest version of the Desktop Sharing Control ({0}). Your current installed version is {1}.</value>
+  </data>
+  <data name="SharedDesktop_UpdateLink" xml:space="preserve">
+    <value>Update Desktop Sharing Control</value>
+  </data>
+  <data name="SharedDesktop_UpdateMsgFormat" xml:space="preserve">
+    <value>The version of the Desktop Sharing Control that you have installed ({0}) is obsolete. Click the link below to update it to the latest version ({1}). You will unfortunately need to close your browser while the update is running.</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="NewTab" xml:space="preserve">
+    <value>New Tab</value>
+  </data>
+  <data name="SharedDesktop_InstallLink" xml:space="preserve">
+    <value>Install Desktop Sharing Control</value>
+  </data>
+  <data name="SharedDesktop_InstallMessage" xml:space="preserve">
+    <value>To share your desktop, you'll first need to install a small control.  Click this button to download the setup file, then follow your browser's instructions. (You may need to restart your browser when the installation is finished.)</value>
+  </data>
+  <data name="SharedDesktop_StartSharingDesktop" xml:space="preserve">
+    <value>Start Sharing Your Desktop</value>
+  </data>
+  <data name="SharedDesktop_StopSharingDesktop" xml:space="preserve">
+    <value>Stop Sharing Your Desktop</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="DesktopSharing_NotInitialized" xml:space="preserve">
+    <value>The desktop sharing control appears to be installed, but for some unknown reason, we couldn't communicate with it.</value>
+  </data>
+  <data name="SelectAvatar" xml:space="preserve">
+    <value>Select Personal Image</value>
+  </data>
+  <data name="StartMicrophone" xml:space="preserve">
+    <value>Start Your Microphone</value>
+  </data>
+  <data name="StartWebcam" xml:space="preserve">
+    <value>Start Your Webcam</value>
+  </data>
+  <data name="AvatarIsTooBig" xml:space="preserve">
+    <value>The image you selected is too large.</value>
+  </data>
+  <data name="LocalCamera_NoAudio" xml:space="preserve">
+    <value>Your microphone does not appear to be capturing audio. Click </value>
+  </data>
+  <data name="LocalCamera_NoAudioOrVideo" xml:space="preserve">
+    <value>Your webcam and microphone do not appear to be capturing data. Click </value>
+  </data>
+  <data name="LocalCamera_NoVideo" xml:space="preserve">
+    <value>Your webcam does not appear to be capturing video. Click </value>
+  </data>
+  <data name="Media_MuteLocalAudio" xml:space="preserve">
+    <value>Mute your microphone</value>
+  </data>
+  <data name="Media_MuteLocalVideo" xml:space="preserve">
+    <value>Stop broadcasting your webcam</value>
+  </data>
+  <data name="Media_MuteRoomAudio" xml:space="preserve">
+    <value>Mute room audio</value>
+  </data>
+  <data name="Media_NoAudioDevice" xml:space="preserve">
+    <value>Unfortunately, no microphone was available.</value>
+  </data>
+  <data name="Media_NoAudioFormat" xml:space="preserve">
+    <value>Unfortunately, we don't support any of the audio formats provided by your microphone.</value>
+  </data>
+  <data name="Media_NoVideoDevice" xml:space="preserve">
+    <value>Unfortunately, no webcam was available.</value>
+  </data>
+  <data name="Media_NoVideoFormat" xml:space="preserve">
+    <value>Unfortunately, we don't support any of the video formats provided by your webcam.</value>
+  </data>
+  <data name="Media_UnableToConnectToMediaServer" xml:space="preserve">
+    <value>Unable to connect to the media server.</value>
+  </data>
+  <data name="Media_UnmuteLocalAudio" xml:space="preserve">
+    <value>Unmute your microphone</value>
+  </data>
+  <data name="Media_UnmuteLocalVideo" xml:space="preserve">
+    <value>Start broadcasting your webcam</value>
+  </data>
+  <data name="Media_UnmuteRoomAudio" xml:space="preserve">
+    <value>Unmute room audio</value>
+  </data>
+  <data name="Media_SetMicrophoneVolume" xml:space="preserve">
+    <value>Adjust the volume of your microphone</value>
+  </data>
+  <data name="ServerMessageProcessingGenericError1" xml:space="preserve">
+    <value>An error occurred processing a message from the server: {0} \r\nThe error has been logged, and we'll try to get it fixed.</value>
+  </data>
+  <data name="Media_ConfigureMicrophoneAndWebcam" xml:space="preserve">
+    <value>Configure your microphone and webcam</value>
+  </data>
+  <data name="ConnectedColon" xml:space="preserve">
+    <value>Connected:</value>
+  </data>
+  <data name="Media_HideRemoteWebCams" xml:space="preserve">
+    <value>Hide remote webcams</value>
+  </data>
+  <data name="Media_ShowRemoteWebCams" xml:space="preserve">
+    <value>Show remote webcams</value>
+  </data>
+  <data name="NameColon" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="UserIdAndColon" xml:space="preserve">
+    <value>UserId:</value>
+  </data>
+  <data name="Media_SetRoomVolume" xml:space="preserve">
+    <value>Set room volume</value>
+  </data>
+  <data name="Media_WaitingForSomeoneToJoin" xml:space="preserve">
+    <value>Waiting for someone to join...</value>
+  </data>
+  <data name="AllMessagesDeleted" xml:space="preserve">
+    <value>Messages deleted</value>
+  </data>
+  <data name="DeleteChatMessagesFailed" xml:space="preserve">
+    <value>An error occurred deleting chat messages</value>
+  </data>
+  <data name="PermissionErrorForDelMsgs" xml:space="preserve">
+    <value>You don't have permission to delete chat messages. Please contact the room owner.</value>
+  </data>
+  <data name="ConfirmBoxTitle" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="DefaultLower" xml:space="preserve">
+    <value>default</value>
+  </data>
+  <data name="DefaultUpper" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="ConfirmPasswordFailed" xml:space="preserve">
+    <value>The password confirmation does not match the password</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>Incorrect password</value>
+  </data>
+  <data name="NoSpaces" xml:space="preserve">
+    <value>No spaces</value>
+  </data>
+  <data name="OccuredErrorTryAgain" xml:space="preserve">
+    <value>Occure error. Try again.</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Password changed</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="TooLong" xml:space="preserve">
+    <value>Too long</value>
+  </data>
+  <data name="TooShort" xml:space="preserve">
+    <value>Too short</value>
+  </data>
+  <data name="ValidationFormFailed" xml:space="preserve">
+    <value>Please fix the errors on the form first.</value>
+  </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="GetImageFromFormat" xml:space="preserve">
+    <value>Get image from {0}</value>
+  </data>
+  <data name="AddStatisticsViewer" xml:space="preserve">
+    <value>Add Statistics Viewer</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="RoomNotFound" xml:space="preserve">
+    <value>The specified room does not appear to exist.</value>
+  </data>
+  <data name="ErrorView_Title" xml:space="preserve">
+    <value>The Alanta application has run into a problem that we can't deal with automatically, specifically:</value>
+  </data>
+  <data name="FatalError" xml:space="preserve">
+    <value>Fatal Error</value>
+  </data>
+  <data name="RoomNameAndOwnerNotFoundFormat" xml:space="preserve">
+    <value>{0} room of {1} was not found</value>
+  </data>
+  <data name="MicrophoneMuted" xml:space="preserve">
+    <value>Microphone muted</value>
+  </data>
+  <data name="RemoteVideoMuted" xml:space="preserve">
+    <value>Remote videos muted</value>
+  </data>
+  <data name="SpeakerMuted" xml:space="preserve">
+    <value>Speakers muted</value>
+  </data>
+  <data name="WebcamMuted" xml:space="preserve">
+    <value>Webcamera muted</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>End Call</value>
+  </data>
+  <data name="DisconnectToolTip" xml:space="preserve">
+    <value>Finish this call</value>
+  </data>
+  <data name="RejoinOnValidationLoadedRoomFailed" xml:space="preserve">
+    <value>For some reason, certain parts of the room failed to load first time around. We've reloaded them. Carry on.</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailValidationFailed" xml:space="preserve">
+    <value>The email address does not appear to be valid</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="ValidationFieldEmptyFormat" xml:space="preserve">
+    <value>{0} is empty</value>
+  </data>
+  <data name="ModerationRequestDeniedFormat" xml:space="preserve">
+    <value>Your request to room {0} denied</value>
+  </data>
+  <data name="EmailColon" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="MessageColon" xml:space="preserve">
+    <value>Message:</value>
+  </data>
+  <data name="TipRoomEmpty" xml:space="preserve">
+    <value>The room is empty. Create a new item.</value>
+  </data>
+  <data name="AtLeastOneOptionNeedSelect" xml:space="preserve">
+    <value>At least one option need select</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Not found</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Let's Talk</value>
+  </data>
+  <data name="AdministratorLeftChat" xml:space="preserve">
+    <value>The room administrator has left the chat.</value>
+  </data>
+  <data name="AdministratorOnlineCanSendMsg" xml:space="preserve">
+    <value>The room administrator is online, and you can send him or her a message via Alanta</value>
+  </data>
+  <data name="Decline" xml:space="preserve">
+    <value>Not Now</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>Ignore</value>
+  </data>
+  <data name="UserOfflineContactViaEmail" xml:space="preserve">
+    <value>The remote user is not online. You can contact him or her via email.</value>
+  </data>
+  <data name="UserOnlineCanSendMessage" xml:space="preserve">
+    <value>The remote user is online, and you can send him or her a message via Alanta.</value>
+  </data>
+  <data name="AccessRequested" xml:space="preserve">
+    <value>A customer is waiting to talk to you</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Connecting</value>
+  </data>
+  <data name="ConnectingToDescriptionFormat" xml:space="preserve">
+    <value>Calling {0}</value>
+  </data>
+  <data name="TooLateUserLeft" xml:space="preserve">
+    <value>Too late, user left.</value>
+  </data>
+  <data name="RoomUnavailable" xml:space="preserve">
+    <value>Room unavailable</value>
+  </data>
+  <data name="Joining" xml:space="preserve">
+    <value>Joining</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy policy</value>
+  </data>
+  <data name="RoomUnavailableDefaultNoteFormat" xml:space="preserve">
+    <value>Hi, this is {0}. I'm very sorry, but I'm not available at the moment. Please leave me a message and the preferred method and time to contact you.</value>
+  </data>
+  <data name="PhoneNumberColon" xml:space="preserve">
+    <value>Phone number:</value>
+  </data>
+  <data name="TransferUser" xml:space="preserve">
+    <value>Transfer user</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="NotImplemented" xml:space="preserve">
+    <value>Sorry, it's not work yet</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendErrorInfo" xml:space="preserve">
+    <value>Send error information</value>
+  </data>
+  <data name="UnableConnectToWebService" xml:space="preserve">
+    <value>We weren't able to connect to our web service. In order to work, this application need access to a range of ports (943, and 4502-4534) that some firewalls may block. You will probably need to get in touch with your network administrator. See also: 
+
+http://msdn.microsoft.com/en-us/library/cc645032(VS.95).aspx
+http://blogs.msdn.com/b/ncl/archive/2009/06/23/why-does-silverlight-have-a-restricted-port-range-for-sockets.aspx
+
+Our apologies for the difficulty.</value>
+  </data>
+  <data name="SendErrorNoteLabel" xml:space="preserve">
+    <value>(Optional) Tell us more about what you were doing:</value>
+  </data>
+  <data name="LeaveMessage" xml:space="preserve">
+    <value>Just Leave a Message</value>
+  </data>
+  <data name="StartMessage" xml:space="preserve">
+    <value>Hi, this is {0}, and I'm looking forward to talking with you. Before we do, let's make sure that we'll be able to hear each other. Start by clicking one of the buttons below. You should see a dialog box that confirms your choice. Just click "OK" in that dialog box, and we'll be off and running.</value>
+  </data>
+  <data name="DeleteSelectedFormat" xml:space="preserve">
+    <value>Delete selected {0}?</value>
+  </data>
+  <data name="MissedCallFormat" xml:space="preserve">
+    <value>Missed call at {0}</value>
+  </data>
+  <data name="MissedCall" xml:space="preserve">
+    <value>Missed call</value>
+  </data>
+  <data name="CommunicationFaulted" xml:space="preserve">
+    <value>Communication faulted</value>
+  </data>
+  <data name="ReconnectOnCommunicationFaulted" xml:space="preserve">
+    <value>Communication faulted and your invitation expired. Reconnect?</value>
+  </data>
+  <data name="UserReconnectedFormat" xml:space="preserve">
+    <value>{0} lost connection and successfully reconnected.</value>
+  </data>
+  <data name="You" xml:space="preserve">
+    <value>You</value>
+  </data>
+  <data name="TextChatOnly" xml:space="preserve">
+    <value>Text Chat Only</value>
+  </data>
+  <data name="UploadAvatarFailed" xml:space="preserve">
+    <value>Unable to upload personal image.</value>
+  </data>
+</root>

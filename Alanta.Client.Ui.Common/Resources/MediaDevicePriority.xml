@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+In some cases, such as on a Macintosh, Silverlight does a piss-poor job of selecting a good default device.  
+This file is supposed to help with that.  If one of the detected devices matches one of the device friendly names below,
+that device will be selected over the "default" device.  Notice that the FriendlyNameMatch attribute is in
+regular expression format.
+-->
+<Devices>
+  <AudioCaptureDevices>
+    <Device FriendlyNameMatch="Built-in Microphone" Priority="10" />
+    <Device FriendlyNameMatch="Built-in Input" Priority="7" />
+    <Device FriendlyNameMatch="Built-in.*" Priority="6" />
+    <Device FriendlyNameMatch="Microsoft.*HD-5000" Priority="5" />
+    <Device FriendlyNameMatch="Microsoft.*" Priority="4" />
+    <Device FriendlyNameMatch="QuickCam.*" Priority="3" />
+  </AudioCaptureDevices>
+  <VideoCaptureDevices>
+    <Device FriendlyNameMatch="Built-in iSight" Priority="10" />
+    <Device FriendlyNameMatch="Built-in.*" Priority="6" />
+    <Device FriendlyNameMatch="Microsoft.*HD-5000" Priority="5" />
+    <Device FriendlyNameMatch="Microsoft.*" Priority="4" />
+    <Device FriendlyNameMatch="Logitech.*" Priority="3" />
+  </VideoCaptureDevices>
+</Devices>
