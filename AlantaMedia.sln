@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solutio
 		CopyIfNewer.cmd = CopyIfNewer.cmd
 		Local.testsettings = Local.testsettings
 		ReadMe.htm = ReadMe.htm
+		readme.md = readme.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Silverlight Client", "Silverlight Client", "{EE888C27-BC56-4B08-A287-B2530FBD681A}"

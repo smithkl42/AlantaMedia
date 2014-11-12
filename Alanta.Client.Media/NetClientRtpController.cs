@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using System.Text;
-using System.Linq;
 using System.Xml.Linq;
 
 namespace Alanta.Client.Media
@@ -17,28 +7,20 @@ namespace Alanta.Client.Media
     // For testing purposes only.  It simulates locally the XML responses of the controller portion of our remote RTP-like media server.
     internal class NetClientRtpController : INetClient
     {
-
-        private bool isConnected;
-        private Action<byte[], int, int> processReceivedPacket;
         private const string Success = "Success";
         private const string Failed = "Failed";
+        private bool isConnected;
+        private Action<byte[], int, int> processReceivedPacket;
 
         public string Host
         {
-            get
-            {
-                return string.Empty;
-            }
+            get { return string.Empty; }
         }
 
         public int Port
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
-
 
         #region INetClient Members
 
@@ -67,21 +49,21 @@ namespace Alanta.Client.Media
         public void Send(byte[] packet, int offset, int length)
         {
             // Send back a message indicating the registration succeeded.
-            string message = Encoding.UTF8.GetString(packet, offset, length).Split('\0')[0];
-            XDocument commandDoc = XDocument.Parse(message);
-            XDocument responseDoc = new XDocument();
-            XElement responses = new XElement("Responses");
+            var message = Encoding.UTF8.GetString(packet, offset, length).Split('\0')[0];
+            var commandDoc = XDocument.Parse(message);
+            var responseDoc = new XDocument();
+            var responses = new XElement("Responses");
             responseDoc.AddFirst(responses);
             var commands = commandDoc.Root.Elements(); // .Descendants("Commands");
-            foreach (XElement command in commands)
+            foreach (var command in commands)
             {
-                XElement response = new XElement("Response");
+                var response = new XElement("Response");
                 response.Add(new XAttribute("Id", command.Attribute("Id").Value));
                 response.Add(new XAttribute("Result", Success));
                 responses.Add(response);
             }
 
-            byte[] responsePacket = UTF8Encoding.UTF8.GetBytes(responseDoc.ToString());
+            var responsePacket = Encoding.UTF8.GetBytes(responseDoc.ToString());
             processReceivedPacket(responsePacket, 0, responsePacket.Length);
         }
 

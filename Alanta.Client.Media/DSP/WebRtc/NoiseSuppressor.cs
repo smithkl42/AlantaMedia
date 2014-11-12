@@ -508,7 +508,6 @@ namespace Alanta.Client.Media.Dsp.WebRtc
 			featureExtractionParams.thresWeightSpecDiff = (int)(0.3 * (modelUpdatePars[1])); //for spectral difference
 		}
 
-
 		private void WebRtcNs_ComputeSpectralFlatness(float[] magnIn)
 		{
 			int i;
