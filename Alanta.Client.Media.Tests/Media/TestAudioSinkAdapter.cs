@@ -2,6 +2,7 @@
 using System.Windows.Media;
 using Alanta.Client.Common;
 using Alanta.Client.Media;
+using Alanta.Client.Media.Tests;
 using AudioFormat = Alanta.Client.Media.AudioFormat;
 
 namespace Alanta.Client.Test.Media

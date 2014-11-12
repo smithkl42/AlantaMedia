@@ -1,14 +1,15 @@
 ﻿<navigation:Page 
-	x:Class="Alanta.Client.Test.Media.Aec.ParamsTest" 
+	x:Class="Alanta.Client.Media.Tests.Media.Aec.ParamsTest" 
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	xmlns:av="clr-namespace:Alanta.Client.UI.Desktop.Controls.AudioVisualizer;assembly=Alanta.Client.UI.Desktop"
 	xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
 	d:DesignWidth="950" d:DesignHeight="480"
-	Title="EchoCancellationTest Page" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+	Title="EchoCancellationTest Page" 
+    xmlns:audioVisualizer="clr-namespace:Alanta.Client.Ui.Controls.AudioVisualizer;assembly=Alanta.Client.Ui.Common"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
 	<Grid x:Name="LayoutRoot">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="2*" />
@@ -27,40 +28,40 @@
 		</Grid.RowDefinitions>
 
 		<StackPanel Orientation="Horizontal" Grid.Row="0" x:Name="panelMicrophone" VerticalAlignment="Center" >
-			<sdk:Label HorizontalAlignment="Left" Margin="10,5,5,5" Content="Step 1: Enable Microphone" Grid.Row="0" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,5,5,5" Text="Step 1: Enable Microphone" Grid.Row="0" />
 			<TextBlock Margin="4" Text="{Binding AudioCaptureDevice.DesiredFormat.BitsPerSample, StringFormat='Bits:{0}'}" />
 			<TextBlock Margin="4" Text="{Binding AudioCaptureDevice.DesiredFormat.SamplesPerSecond, StringFormat='Samples:{0}'}" />
 		</StackPanel>
 		<Button Grid.Column="1" Content="Enable Microphone" Margin="5" x:Name="btnEnableMicrophone" Click="btnEnableMicrophone_Click" Width="120" HorizontalAlignment="Left" Grid.Row="0" />
 		<TextBox x:Name="txtStatus" IsReadOnly="True" HorizontalAlignment="Stretch" Grid.Column="1" Margin="136,5,5,5" />
 
-		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Step 2: Get Audio To Play" Grid.Row="1" />
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Text="Step 2: Get Audio To Play" Grid.Row="1" />
 		<StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
 			<Button Content="Record Source" Margin="5" Width="120" x:Name="btnRecordSource" Click="btnRecordSource_Click" />
-			<sdk:Label>...or...</sdk:Label>
+			<TextBlock>...or...</TextBlock>
 			<Button Grid.Column="1" Content="Open Source" Margin="5" Width="120" x:Name="btnOpenSource" Click="btnOpenSource_Click" />
-			<sdk:Label>... and you can then -></sdk:Label>
+			<TextBlock>... and you can then -></TextBlock>
 			<Button Content="Save Source" Margin="5" Width="120" x:Name="btnSaveSource" Click="btnSaveSource_Click" />
 			<Button Content="(Play)" Margin="5" x:Name="btnPlaySource" Click="btnPlaySource_Click" />
 		</StackPanel>
 
-		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Step 3: Play Back the Audio (get echo signal)" Grid.Row="2" />
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Text="Step 3: Play Back the Audio (get echo signal)" Grid.Row="2" />
 		<StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" >
 			<Button Content="Record Speakers" Margin="5" x:Name="btnRecordSpeakers" Width="120" Click="btnRecordSpeakers_Click" />
-			<sdk:Label>...or...</sdk:Label>
+			<TextBlock>...or...</TextBlock>
 			<Button Grid.Column="1" Content="Open Speakers" Margin="5" Width="120" x:Name="btnOpenSpeakers" Click="btnOpenSpeakers_Click" />
-			<sdk:Label>... and you can then -></sdk:Label>
+			<TextBlock>... and you can then -></TextBlock>
 			<Button Content="Save Speakers" Margin="5" x:Name="btnSaveSpeakers" Width="120" Click="btnSaveSpeakers_Click" />
 			<Button Content="(Play)" Margin="5" x:Name="btnPlaySpeakers" Click="btnPlaySpeakers_Click"/>
 		</StackPanel>
 
-		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Step 4: Run Echo Cancellation Tests" Grid.Row="3" />
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Text="Step 4: Run Echo Cancellation Tests" Grid.Row="3" />
 		<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="3" >
 			<Button Content="Start" Margin="5" x:Name="btnStart" Width="120" Click="btnStart_Click" />
 			<Button x:Name="btnExport" Content="Export Results" Width="120" Margin="5" Click="btnExport_Click" />
 		</StackPanel>
 
-		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Step 4: Run Echo Cancellation Tests" Grid.Row="4" />
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Text="Step 4: Run Echo Cancellation Tests" Grid.Row="4" />
 		<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="4" >
 			<ComboBox x:Name="cboEchoCancelFilter" Height="25" Margin="5" SelectedIndex="0">
 				<ComboBox.Items>
@@ -71,43 +72,43 @@
 				</ComboBox.Items>
 			</ComboBox>
 			<CheckBox x:Name="chkSynchronizeRecording" Content="Synchronize Recording" VerticalAlignment="Center" IsChecked="{Binding SynchronizeOutput, Mode=TwoWay}" Margin="5" />
-			<CheckBox x:Name="chkSynchronizeAEC" Content="Synchronize AEC" VerticalAlignment="Center" IsChecked="False" Margin="5" />
+			<CheckBox x:Name="chkSynchronizeAec" Content="Synchronize AEC" VerticalAlignment="Center" IsChecked="False" Margin="5" />
 			<CheckBox x:Name="chkLive" Content="Perform AEC Live" VerticalAlignment="Center" IsChecked="False" Margin="5" />
 		</StackPanel>
 
 
-		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Expected Latency (in milliseconds)" Grid.Row="5" />
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Text="Expected Latency (in milliseconds)" Grid.Row="5" />
 		<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="5" >
-			<sdk:Label x:Name="temp" Content="Start:" />
+            <TextBlock x:Name="temp" Text="Start:" />
 			<TextBox Margin="10" x:Name="txtExpectedLatencyStart" Text="160" Width="70" HorizontalAlignment="Left" />
-			<sdk:Label Content="End:" />
+            <TextBlock Text="End:" />
 			<TextBox Margin="10" x:Name="txtExpectedLatencyEnd" Text="320" Width="70" HorizontalAlignment="Left" />
-			<sdk:Label Content="Step:" />
+            <TextBlock Text="Step:" />
 			<TextBox Margin="10" x:Name="txtExpectedLatencyStep" Text="20" Width="70" HorizontalAlignment="Left" />
 		</StackPanel>
 
-		<sdk:Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Content="Filter Length (in milliseconds)" Grid.Row="6" />
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,5,5" Text="Filter Length (in milliseconds)" Grid.Row="6" />
 		<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="6" >
-			<sdk:Label Content="Start:" />
+            <TextBlock Text="Start:" />
 			<TextBox Margin="10" x:Name="txtFilterLengthStart" Text="256" Width="70" HorizontalAlignment="Left" />
-			<sdk:Label Content="End:" />
+            <TextBlock Text="End:" />
 			<TextBox Margin="10" x:Name="txtFilterLengthEnd" Text="256" Width="70" HorizontalAlignment="Left" />
-			<sdk:Label Content="Step:" />
+            <TextBlock Text="Step:" />
 			<TextBox Margin="10" x:Name="txtFilterLengthStep" Text="10" Width="70" HorizontalAlignment="Left" />
 		</StackPanel>
 
 		<StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="4"  Grid.Row="7" >
 			<StackPanel Orientation="Vertical">
-				<sdk:Label>Near end (recorded at microphone)</sdk:Label>
-				<av:AudioVisualizer x:Name="sourceAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
+				<TextBlock>Near end (recorded at microphone)</TextBlock>
+				<audioVisualizer:AudioVisualizer x:Name="sourceAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
 			</StackPanel>
 			<StackPanel Orientation="Vertical">
-				<sdk:Label>Far end (played to speakers)</sdk:Label>
-				<av:AudioVisualizer x:Name="speakersAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
+				<TextBlock>Far end (played to speakers)</TextBlock>
+				<audioVisualizer:AudioVisualizer x:Name="speakersAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
 			</StackPanel>
 			<StackPanel Orientation="Vertical">
-				<sdk:Label>Cancelled (sent back to far end)</sdk:Label>
-				<av:AudioVisualizer x:Name="cancelledAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
+				<TextBlock>Cancelled (sent back to far end)</TextBlock>
+				<audioVisualizer:AudioVisualizer x:Name="cancelledAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
 			</StackPanel>
 		</StackPanel>
 

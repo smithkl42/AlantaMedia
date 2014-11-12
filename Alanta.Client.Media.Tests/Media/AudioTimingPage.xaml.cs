@@ -7,11 +7,10 @@ using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Threading;
 using Alanta.Client.Common.Logging;
-using Alanta.Client.Media;
-using Alanta.Client.UI.Common.Classes;
-using AudioFormat = Alanta.Client.Media.AudioFormat;
+using Alanta.Client.Test.Media;
+using Alanta.Client.Ui.Common;
 
-namespace Alanta.Client.Test.Media
+namespace Alanta.Client.Media.Tests.Media
 {
     public partial class AudioTimingPage : Page, IAudioFrameSource
     {

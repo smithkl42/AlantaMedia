@@ -1,13 +1,12 @@
 ﻿<navigation:Page 
-    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
-    x:Class="Alanta.Client.Test.Media.AudioLoopbackTest" 
+    x:Class="Alanta.Client.Media.Tests.Media.AudioLoopbackTest" 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:av="clr-namespace:Alanta.Client.UI.Desktop.Controls.AudioVisualizer;assembly=Alanta.Client.UI.Desktop"
     xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+    xmlns:audioVisualizer="clr-namespace:Alanta.Client.Ui.Controls.AudioVisualizer;assembly=Alanta.Client.Ui.Common"
     d:DesignWidth="640" d:DesignHeight="480"
     Title="AudioLoopbackTest Page">
     <navigation:Page.Resources>
@@ -39,11 +38,11 @@
         </StackPanel>
         <Button x:Name="enableMicrophone" Content="Capture and Play Microphone" Margin="4" Height="100" Width="200" Click="enableMicrophone_Click" Grid.Column="1" />
         <StackPanel Grid.Row="1">
-            <av:AudioVisualizer x:Name="inputAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
+            <audioVisualizer:AudioVisualizer x:Name="inputAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3" />
             <TextBlock x:Name="lblRawSamples" />
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <av:AudioVisualizer x:Name="outputAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3"/>
+            <audioVisualizer:AudioVisualizer x:Name="outputAudioVisualizer" Margin="4" Height="200" Width="300" VolumeFactor="3"/>
             <TextBlock x:Name="lblProcessedSamples" />
         </StackPanel>
     </Grid>

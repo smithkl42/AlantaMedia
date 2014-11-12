@@ -6,12 +6,11 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Alanta.Client.Common.Logging;
-using Alanta.Client.Data;
-using Alanta.Client.Media;
-using Alanta.Client.UI.Common.Classes;
-using AudioFormat = Alanta.Client.Media.AudioFormat;
+using Alanta.Client.Test.Media;
+using Alanta.Client.Test.Media.MediaServer;
+using Alanta.Client.Ui.Common;
 
-namespace Alanta.Client.Test.Media.MediaServer
+namespace Alanta.Client.Media.Tests.Media.MediaServer
 {
 	public partial class MediaServerTest : Page
 	{
@@ -28,7 +27,7 @@ namespace Alanta.Client.Test.Media.MediaServer
 			InitializeCaptureSource();
 			lstClients.ItemsSource = _mediaServerVms;
 			btnStop.IsEnabled = false;
-			txtHost.Text = DataGlobals.MediaServerHost;
+			txtHost.Text = "localhost";
 		}
 
 		private void InitializeCaptureSource()
@@ -105,8 +104,8 @@ namespace Alanta.Client.Test.Media.MediaServer
 				_audioSinkAdapter.AudioControllers.Clear();
 				_audioSinkAdapter.AudioContexts.Clear();
 				_mediaStreamSource.AudioControllers.Clear();
-				var connections = (int)txtConnections.Value;
-				var rooms = (int)txtRooms.Value;
+				var connections = int.Parse(txtConnections.Text);
+				var rooms = int.Parse(txtRooms.Text);
 				_audioSinkAdapter.Rooms = rooms;
 				_audioSinkAdapter.ConnectionsPerRoom = connections;
 				for (int room = 0; room < rooms; room++)
@@ -171,12 +170,12 @@ namespace Alanta.Client.Test.Media.MediaServer
 			var mediaConfig = new MediaConfig
 			{
 				MediaServerHost = txtHost.Text,
-				MediaServerControlPort = DataGlobals.MediaServerControlPort,
-				MediaServerStreamingPort = DataGlobals.MediaServerStreamingPort,
+				MediaServerControlPort = MediaConstants.DefaultMediaServerControlPort,
+				MediaServerStreamingPort = MediaConstants.DefaultMediaServerStreamingPort,
 				CodecFactory = new CodecFactory(AudioFormat.Default),
 				LocalSsrcId = (ushort)_rnd.Next(ushort.MaxValue),
-				ExpectedAudioLatency = DataGlobals.ExpectedAudioLatency,
-				FilterLength = DataGlobals.FilterLength,
+				ExpectedAudioLatency = 200,
+				FilterLength = 200,
 				PlayEchoCancelledSound = true,
 				ApplyVolumeFilterToPlayedSound = true,
 				ApplyVolumeFilterToRecordedSound = true,

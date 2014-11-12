@@ -261,21 +261,6 @@
 					Height="24" Width="24" Margin="4" 
 					Source="{Binding VideoQualityController.LocalVideoQualityImage}" 
 					ToolTipService.ToolTip="{Binding VideoQualityController.LocalVideoQuality, StringFormat='Video Quality:{0}'}" />
-                <Image 
-					x:Name="speechEnhancementQuality"
-					Height="24" Width="24" Margin="4" 
-					Source="{Binding LastSpeechEnhancementName, Converter={StaticResource speechEnhancementToIconConverter}}" 
-					ToolTipService.ToolTip="{Binding LastSpeechEnhancementName, StringFormat='Speech Enhancement Quality:{0}'}" />
-                <Image
-					x:Name="imgLastEncoder"
-					Height="24" Width="24" Margin="4"
-					Source="{Binding LastAudioEncoder, Converter={StaticResource codecToIconConverter}}" 
-					ToolTipService.ToolTip="{Binding LastAudioEncoder, StringFormat='Encoder:{0}'}"/>
-                <Image
-					x:Name="imgLastDecoder"
-					Height="24" Width="24" Margin="4"
-					Source="{Binding LastAudioDecoder, Converter={StaticResource codecToIconConverter}}"
-					ToolTipService.ToolTip="{Binding LastAudioDecoder, StringFormat='Decoder:{0}'}"/>
             </StackPanel>
         </Grid>
 

@@ -254,7 +254,7 @@ namespace Alanta.Client.Media.Tests.Media.Aec
                     _testRunner.FilterLengthStart = int.Parse(txtFilterLengthStart.Text);
                     _testRunner.FilterLengthEnd = int.Parse(txtFilterLengthEnd.Text);
                     _testRunner.FilterLengthStep = int.Parse(txtFilterLengthStep.Text);
-                    _testRunner.AecIsSynchronized = chkSynchronizeAEC.IsChecked == true;
+                    _testRunner.AecIsSynchronized = chkSynchronizeAec.IsChecked == true;
                     _testRunner.SourceFrames = _sourceFrames;
                     btnStart.Content = stopText;
 

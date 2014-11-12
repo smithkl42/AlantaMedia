@@ -111,6 +111,11 @@
       <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Navigation, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
@@ -142,10 +147,6 @@
     </Compile>
     <Compile Include="Media\DestinationCodecFactory.cs" />
     <Compile Include="Media\DestinationMediaController.cs" />
-    <Compile Include="Media\DestinationRoomController.cs" />
-    <Compile Include="Media\DestinationRoomPage.xaml.cs">
-      <DependentUpon>DestinationRoomPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Media\EchoCancellationTest.xaml.cs">
       <DependentUpon>EchoCancellationTest.xaml</DependentUpon>
     </Compile>
@@ -153,12 +154,6 @@
       <DependentUpon>JpegTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Media\LoopbackMediaConnection.cs" />
-    <Compile Include="Media\Mac\FromFileAudioSinkAdapter.cs" />
-    <Compile Include="Media\Mac\MacTestPage.xaml.cs">
-      <DependentUpon>MacTestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Media\Mac\MacTestViewModel.cs" />
-    <Compile Include="Media\Mac\SingleFrameMediaConnection.cs" />
     <Compile Include="Media\MediaServer\MediaServerKpi.cs" />
     <Compile Include="Media\MediaServer\MediaServerTest.xaml.cs">
       <DependentUpon>MediaServerTest.xaml</DependentUpon>
@@ -166,28 +161,17 @@
     <Compile Include="Media\MediaServer\MediaServerViewModel.cs" />
     <Compile Include="Media\MediaServer\MultipleControllerAudioMediaStreamSource.cs" />
     <Compile Include="Media\MediaServer\MultipleControllerAudioSinkAdapter.cs" />
-    <Compile Include="Media\MediaTest.xaml.cs">
-      <DependentUpon>MediaTest.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Media\MediaTestHelper.cs" />
     <Compile Include="Media\NullAudioController.cs" />
     <Compile Include="Media\Oscillator.cs" />
     <Compile Include="Media\SingleAudioContextFactory.cs" />
     <Compile Include="Media\SourceMediaController.cs" />
-    <Compile Include="Media\SourceRoomController.cs" />
     <Compile Include="Media\TestAudioContextFactory.cs" />
     <Compile Include="Media\TestAudioSinkAdapter.cs" />
     <Compile Include="Media\TestAudioStreamSource.cs" />
     <Compile Include="Media\TestMultipleDestinationAudioSinkAdapter.cs" />
     <Compile Include="Media\TestMultipleDestinationVideoSinkAdapter.cs" />
     <Compile Include="Media\TestTimingAudioSink.cs" />
-    <Compile Include="Media\Timing\TimingAudioSinkAdapter.cs" />
-    <Compile Include="Media\Timing\TimingMediaConnection.cs" />
-    <Compile Include="Media\Timing\TimingMediaStatistics.cs" />
-    <Compile Include="Media\Timing\TimingPage.xaml.cs">
-      <DependentUpon>TimingPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Media\Timing\TimingViewModel.cs" />
     <Compile Include="Media\VadTestPage.xaml.cs">
       <DependentUpon>VadTestPage.xaml</DependentUpon>
     </Compile>
@@ -200,6 +184,9 @@
     <Compile Include="Media\Video\TestRunner.cs" />
     <Compile Include="Media\Video\TestVideoMediaStreamSource.cs" />
     <Compile Include="Media\Video\TestVideoQualityController.cs" />
+    <Compile Include="Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VideoQualityControllerTests.cs" />
   </ItemGroup>
@@ -224,10 +211,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Media\DestinationRoomPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Media\EchoCancellationTest.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -236,19 +219,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Media\Mac\MacTestPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Media\MediaServer\MediaServerTest.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Media\MediaTest.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Media\Timing\TimingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -259,6 +230,10 @@
     <Page Include="Media\Video\CodecTest.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

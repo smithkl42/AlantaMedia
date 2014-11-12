@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
-using System.Windows.Media;
-using Alanta.Client.Media;
 using Alanta.Client.Media.AudioCodecs;
 using Alanta.Client.Media.Dsp;
-using Alanta.Client.Media.Tests.Media.Aec;
-using Alanta.Client.UI.Desktop.Controls.AudioVisualizer;
-using AudioFormat = Alanta.Client.Media.AudioFormat;
+using Alanta.Client.Ui.Controls.AudioVisualizer;
 
-namespace Alanta.Client.Test.Media.Aec
+namespace Alanta.Client.Media.Tests.Media.Aec
 {
 	public class TestRunnerFast : TestRunnerBase
 	{

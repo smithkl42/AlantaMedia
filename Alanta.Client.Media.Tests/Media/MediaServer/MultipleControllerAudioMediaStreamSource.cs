@@ -5,11 +5,9 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Media;
 using Alanta.Client.Common.Logging;
-using Alanta.Client.Media;
-using Alanta.Client.UI.Desktop.Controls.AudioVisualizer;
-using AudioFormat = Alanta.Client.Media.AudioFormat;
+using Alanta.Client.Ui.Controls.AudioVisualizer;
 
-namespace Alanta.Client.Test.Media.MediaServer
+namespace Alanta.Client.Media.Tests.Media.MediaServer
 {
 	public class MultipleControllerAudioMediaStreamSource : AudioMediaStreamSource
 	{

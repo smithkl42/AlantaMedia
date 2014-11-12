@@ -6,11 +6,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Alanta.Client.Common.Logging;
-using Alanta.Client.Media;
 using Alanta.Client.Media.VideoCodecs;
-using Alanta.Client.UI.Common.Classes;
+using Alanta.Client.Test.Media;
+using Alanta.Client.Test.Media.Video;
+using Alanta.Client.Ui.Common;
 
-namespace Alanta.Client.Test.Media.Video
+namespace Alanta.Client.Media.Tests.Media.Video
 {
 	public partial class CodecTest : Page
 	{

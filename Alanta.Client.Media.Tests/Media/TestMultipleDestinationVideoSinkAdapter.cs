@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Media;
 using Alanta.Client.Media;
 using System.Linq;
+using Alanta.Client.Media.Tests.Media;
 
 namespace Alanta.Client.Test.Media
 {

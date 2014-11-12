@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using Alanta.Client.Media;
-using Alanta.Client.UI.Desktop.Controls.AudioVisualizer;
+using Alanta.Client.Ui.Controls.AudioVisualizer;
 
-namespace Alanta.Client.Test.Media.Aec
+namespace Alanta.Client.Media.Tests.Media.Aec
 {
 	public class PlayerBase : IAudioController
 	{

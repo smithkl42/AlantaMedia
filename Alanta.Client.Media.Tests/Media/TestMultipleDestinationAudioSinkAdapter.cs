@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media;
-using Alanta.Client.Media;
-using AudioFormat = Alanta.Client.Media.AudioFormat;
+using Alanta.Client.Test.Media;
 
-namespace Alanta.Client.Test.Media
+namespace Alanta.Client.Media.Tests.Media
 {
 	public class TestMultipleDestinationAudioSinkAdapter : AudioSinkAdapter
 	{
@@ -15,15 +14,15 @@ namespace Alanta.Client.Test.Media
 			MediaConfig mediaConfig)
 			: base(captureSource, mediaController, mediaConfig, new TestMediaEnvironment(), AudioFormat.Default)
 		{
-			this.mediaControllers = mediaControllers;
+			_mediaControllers = mediaControllers;
 		}
 
-		private Dictionary<Guid, DestinationMediaController> mediaControllers { get; set; }
+	    private readonly Dictionary<Guid, DestinationMediaController> _mediaControllers;
 
 		protected override void SubmitFrame(AudioContext ctx, byte[] frame)
 		{
 			base.SubmitFrame(ctx, frame);
-			foreach (DestinationMediaController testMediaController in mediaControllers.Values)
+			foreach (DestinationMediaController testMediaController in _mediaControllers.Values)
 			{
 				// Make a copy so we don't run into threading issues.
 				var copy = new byte[frame.Length];
@@ -31,6 +30,5 @@ namespace Alanta.Client.Test.Media
 				testMediaController.SubmitRecordedFrame(ctx, copy);
 			}
 		}
-
 	}
 }

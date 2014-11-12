@@ -9,10 +9,10 @@ using Alanta.Client.Common;
 using Alanta.Client.Common.Logging;
 using Alanta.Client.Media.Dsp;
 using Alanta.Client.Media.Dsp.Speex;
-using Alanta.Client.UI.Common.Classes;
-using AudioFormat = Alanta.Client.Media.AudioFormat;
+using Alanta.Client.Test.Media;
+using Alanta.Client.Ui.Common;
 
-namespace Alanta.Client.Test.Media
+namespace Alanta.Client.Media.Tests.Media
 {
     public partial class EchoCancellationTest : Page, IAudioFrameSource
     {

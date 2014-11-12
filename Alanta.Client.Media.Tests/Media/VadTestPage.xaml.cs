@@ -1,18 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Alanta.Client.Common.Logging;
-using Alanta.Client.Media;
 using Alanta.Client.Media.Dsp;
-using Alanta.Client.UI.Common.Classes;
-using System.Collections.Generic;
-using System.IO;
-using AudioFormat = Alanta.Client.Media.AudioFormat;
+using Alanta.Client.Test.Media;
+using Alanta.Client.Ui.Common;
 
-namespace Alanta.Client.Test.Media
+namespace Alanta.Client.Media.Tests.Media
 {
 	public partial class VadTestPage : Page
 	{

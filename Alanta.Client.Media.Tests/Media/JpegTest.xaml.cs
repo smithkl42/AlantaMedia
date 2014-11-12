@@ -5,14 +5,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using Alanta.Client.Media;
 using Alanta.Client.Media.Jpeg;
 using Alanta.Client.Media.Jpeg.Decoder;
 using Alanta.Client.Media.Jpeg.Encoder;
 using Alanta.Client.Media.VideoCodecs;
+using Alanta.Client.Test.Media;
 using Image = System.Windows.Controls.Image;
 
-namespace Alanta.Client.Test.Media
+namespace Alanta.Client.Media.Tests.Media
 {
 	public partial class JpegTest : Page
 	{

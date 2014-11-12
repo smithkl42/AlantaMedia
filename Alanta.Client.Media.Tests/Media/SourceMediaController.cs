@@ -1,9 +1,7 @@
 ﻿using System;
-using Alanta.Client.UI.Desktop.Controls.AudioVisualizer;
-using Alanta.Client.Media;
-using Alanta.Common;
+using Alanta.Client.Ui.Controls.AudioVisualizer;
 
-namespace Alanta.Client.Test.Media
+namespace Alanta.Client.Media.Tests.Media
 {
 	public class SourceMediaController: MediaController
 	{
