@@ -38,20 +38,25 @@ using System.Diagnostics;
 
 namespace Alanta.Client.Media.Dsp.Speex
 {
-
     public class SpeexFft
     {
-        const int maxFftSize = 2048;
+        private const int maxFftSize = 2048;
+        private static readonly int[] ntryh = {4, 2, 3, 5};
+        private static float tpi = 6.28318530717958648f;
+        private static float hsqt2 = .70710678118654752f;
+        private static float taur = -.5f;
+        private static float taui = .8660254037844386f;
+        private static float sqrt2 = 1.414213562373095f;
 
         public int n;
-        public float[] trigcache;
         public int[] splitcache;
+        public float[] trigcache;
 
         public SpeexFft(int size)
         {
-            this.n = size;
-            this.trigcache = new float[3 * n];
-            this.splitcache = new int[32];
+            n = size;
+            trigcache = new float[3*n];
+            splitcache = new int[32];
             fdrffti(n, trigcache, splitcache);
         }
 
@@ -60,17 +65,17 @@ namespace Alanta.Client.Media.Dsp.Speex
             if (inBuffer == outBuffer)
             {
                 int i;
-                float scale = 1.0f / n;
+                var scale = 1.0f/n;
                 Debug.WriteLine("FFT should not be done in-place");
                 for (i = 0; i < n; i++)
-                    outBuffer[outoffset + i] = scale * inBuffer[inoffset + i];
+                    outBuffer[outoffset + i] = scale*inBuffer[inoffset + i];
             }
             else
             {
                 int i;
-                float scale = 1.0f / n;
+                var scale = 1.0f/n;
                 for (i = 0; i < n; i++)
-                    outBuffer[outoffset + i] = scale * inBuffer[inoffset + i];
+                    outBuffer[outoffset + i] = scale*inBuffer[inoffset + i];
             }
             spx_drft_forward(outBuffer, outoffset);
         }
@@ -90,17 +95,14 @@ namespace Alanta.Client.Media.Dsp.Speex
             spx_drft_backward(outBuffer, outoffset);
         }
 
-        static int[] ntryh = new[] { 4, 2, 3, 5 };
-        static float tpi = 6.28318530717958648f;
-
         /// <summary>
-        /// Calculate a lookup table to use later for retrieving sin/cos values, etc.
+        ///     Calculate a lookup table to use later for retrieving sin/cos values, etc.
         /// </summary>
         /// <param name="n">Number of coefficients</param>
         /// <param name="wa">trigcache</param>
         /// <param name="waoffset">trigcache offset</param>
         /// <param name="ifac">splitcache</param>
-        static void drfti1(int n, float[] wa, int waoffset, int[] ifac)
+        private static void drfti1(int n, float[] wa, int waoffset, int[] ifac)
         {
             float arg, argh, argld, fi;
             int ntry = 0, i, j = -1;
@@ -108,19 +110,19 @@ namespace Alanta.Client.Media.Dsp.Speex
             int ld, ii, ip, nq, nr;
             int iz;
             int ido, ipm, nfm1;
-            int nl = n;
-            int nf = 0;
+            var nl = n;
+            var nf = 0;
 
-        L101:
+            L101:
             j++;
             if (j < 4)
                 ntry = ntryh[j];
             else
                 ntry += 2;
 
-        L104:
-            nq = nl / ntry;
-            nr = nl - ntry * nq;
+            L104:
+            nq = nl/ntry;
+            nr = nl - ntry*nq;
             if (nr != 0) goto L101;
 
             nf++;
@@ -136,11 +138,11 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
             ifac[2] = 2;
 
-        L107:
+            L107:
             if (nl != 1) goto L104;
             ifac[0] = n;
             ifac[1] = nf;
-            argh = tpi / n;
+            argh = tpi/n;
             iz = 0;
             nfm1 = nf - 1;
             l1 = 1;
@@ -151,22 +153,22 @@ namespace Alanta.Client.Media.Dsp.Speex
             {
                 ip = ifac[k1 + 2];
                 ld = 0;
-                l2 = l1 * ip;
-                ido = n / l2;
+                l2 = l1*ip;
+                ido = n/l2;
                 ipm = ip - 1;
 
                 for (j = 0; j < ipm; j++)
                 {
                     ld += l1;
                     i = iz;
-                    argld = (float)ld * argh;
+                    argld = ld*argh;
                     fi = 0.0f;
                     for (ii = 2; ii < ido; ii += 2)
                     {
                         fi += 1.0f;
-                        arg = fi * argld;
-                        wa[waoffset + i++] = (float)Math.Cos(arg);
-                        wa[waoffset + i++] = (float)Math.Sin(arg);
+                        arg = fi*argld;
+                        wa[waoffset + i++] = (float) Math.Cos(arg);
+                        wa[waoffset + i++] = (float) Math.Sin(arg);
                     }
                     iz += ido;
                 }
@@ -180,7 +182,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             drfti1(n, wsave, n, ifac);
         }
 
-        static void dradf2(int ido, int l1,
+        private static void dradf2(int ido, int l1,
             float[] cc, int ccoffset,
             float[] ch, int choffset,
             float[] wa1, int wa1offset)
@@ -190,7 +192,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             int t0, t1, t2, t3, t4, t5, t6;
 
             t1 = 0;
-            t0 = (t2 = l1 * ido);
+            t0 = (t2 = l1*ido);
             t3 = ido << 1;
             for (k = 0; k < l1; k++)
             {
@@ -217,8 +219,8 @@ namespace Alanta.Client.Media.Dsp.Speex
                     t4 -= 2;
                     t5 += 2;
                     t6 += 2;
-                    tr2 = wa1[wa1offset + i - 2] * cc[ccoffset + t3 - 1] + wa1[wa1offset + i - 1] * cc[ccoffset + t3];
-                    ti2 = wa1[wa1offset + i - 2] * cc[ccoffset + t3] - wa1[wa1offset + i - 1] * cc[ccoffset + t3 - 1];
+                    tr2 = wa1[wa1offset + i - 2]*cc[ccoffset + t3 - 1] + wa1[wa1offset + i - 1]*cc[ccoffset + t3];
+                    ti2 = wa1[wa1offset + i - 2]*cc[ccoffset + t3] - wa1[wa1offset + i - 1]*cc[ccoffset + t3 - 1];
                     ch[choffset + t6] = cc[ccoffset + t5] + ti2;
                     ch[choffset + t4] = ti2 - cc[ccoffset + t5];
                     ch[choffset + t6 - 1] = cc[ccoffset + t5 - 1] + tr2;
@@ -228,9 +230,9 @@ namespace Alanta.Client.Media.Dsp.Speex
                 t2 += ido;
             }
 
-            if (ido % 2 == 1) return;
+            if (ido%2 == 1) return;
 
-        L105:
+            L105:
             t3 = (t2 = (t1 = ido) - 1);
             t2 += t0;
             for (k = 0; k < l1; k++)
@@ -243,8 +245,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
         }
 
-        static float hsqt2 = .70710678118654752f;
-        static void dradf4(int ido, int l1,
+        private static void dradf4(int ido, int l1,
             float[] cc, int ccoffset,
             float[] ch, int choffset,
             float[] wa1, int wa1offset,
@@ -253,7 +254,7 @@ namespace Alanta.Client.Media.Dsp.Speex
         {
             int i, k, t0, t1, t2, t3, t4, t5, t6;
             float ci2, ci3, ci4, cr2, cr3, cr4, ti1, ti2, ti3, ti4, tr1, tr2, tr3, tr4;
-            t0 = l1 * ido;
+            t0 = l1*ido;
 
             t1 = t0;
             t4 = t1 << 1;
@@ -293,14 +294,14 @@ namespace Alanta.Client.Media.Dsp.Speex
                     t5 -= 2;
 
                     t3 += t0;
-                    cr2 = wa1[wa1offset + i - 2] * cc[ccoffset + t3 - 1] + wa1[wa1offset + i - 1] * cc[ccoffset + t3];
-                    ci2 = wa1[wa1offset + i - 2] * cc[ccoffset + t3] - wa1[wa1offset + i - 1] * cc[ccoffset + t3 - 1];
+                    cr2 = wa1[wa1offset + i - 2]*cc[ccoffset + t3 - 1] + wa1[wa1offset + i - 1]*cc[ccoffset + t3];
+                    ci2 = wa1[wa1offset + i - 2]*cc[ccoffset + t3] - wa1[wa1offset + i - 1]*cc[ccoffset + t3 - 1];
                     t3 += t0;
-                    cr3 = wa2[wa2offset + i - 2] * cc[ccoffset + t3 - 1] + wa2[wa2offset + i - 1] * cc[ccoffset + t3];
-                    ci3 = wa2[wa2offset + i - 2] * cc[ccoffset + t3] - wa2[wa2offset + i - 1] * cc[ccoffset + t3 - 1];
+                    cr3 = wa2[wa2offset + i - 2]*cc[ccoffset + t3 - 1] + wa2[wa2offset + i - 1]*cc[ccoffset + t3];
+                    ci3 = wa2[wa2offset + i - 2]*cc[ccoffset + t3] - wa2[wa2offset + i - 1]*cc[ccoffset + t3 - 1];
                     t3 += t0;
-                    cr4 = wa3[wa3offset + i - 2] * cc[ccoffset + t3 - 1] + wa3[wa3offset + i - 1] * cc[ccoffset + t3];
-                    ci4 = wa3[wa3offset + i - 2] * cc[ccoffset + t3] - wa3[wa3offset + i - 1] * cc[ccoffset + t3 - 1];
+                    cr4 = wa3[wa3offset + i - 2]*cc[ccoffset + t3 - 1] + wa3[wa3offset + i - 1]*cc[ccoffset + t3];
+                    ci4 = wa3[wa3offset + i - 2]*cc[ccoffset + t3] - wa3[wa3offset + i - 1]*cc[ccoffset + t3 - 1];
 
                     tr1 = cr2 + cr4;
                     tr4 = cr4 - cr2;
@@ -328,7 +329,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
             if ((ido & 1) != 0) return;
 
-        L105:
+            L105:
 
             t2 = (t1 = t0 + ido - 1) + (t0 << 1);
             t3 = ido << 2;
@@ -338,8 +339,8 @@ namespace Alanta.Client.Media.Dsp.Speex
 
             for (k = 0; k < l1; k++)
             {
-                ti1 = -hsqt2 * (cc[ccoffset + t1] + cc[ccoffset + t2]);
-                tr1 = hsqt2 * (cc[ccoffset + t1] - cc[ccoffset + t2]);
+                ti1 = -hsqt2*(cc[ccoffset + t1] + cc[ccoffset + t2]);
+                tr1 = hsqt2*(cc[ccoffset + t1] - cc[ccoffset + t2]);
 
                 ch[choffset + t4 - 1] = tr1 + cc[ccoffset + t6 - 1];
                 ch[choffset + t4 + t5 - 1] = cc[ccoffset + t6 - 1] - tr1;
@@ -354,7 +355,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
         }
 
-        static void dradfg(int ido, int ip, int l1, int idl1,
+        private static void dradfg(int ido, int ip, int l1, int idl1,
             float[] cc, int ccoffset,
             float[] c1, int c1offset,
             float[] c2, int c2offset,
@@ -362,7 +363,6 @@ namespace Alanta.Client.Media.Dsp.Speex
             float[] ch2, int ch2offset,
             float[] wa, int waoffset)
         {
-
             int idij, ipph, i, j, k, l, ic, ik;
             int iz;
             int t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10;
@@ -371,15 +371,15 @@ namespace Alanta.Client.Media.Dsp.Speex
             float dcp, arg, dsp, ar1h, ar2h;
             int idp2, ipp2;
 
-            arg = tpi / (float)ip;
-            dcp = (float)Math.Cos(arg);
-            dsp = (float)Math.Sin(arg);
+            arg = tpi/ip;
+            dcp = (float) Math.Cos(arg);
+            dsp = (float) Math.Sin(arg);
             ipph = (ip + 1) >> 1;
             ipp2 = ip;
             idp2 = ido;
             nbd = (ido - 1) >> 1;
-            t0 = l1 * ido;
-            t10 = ip * ido;
+            t0 = l1*ido;
+            t10 = ip*ido;
 
             if (ido == 1) goto L119;
             for (ik = 0; ik < idl1; ik++) ch2[ch2offset + ik] = c2[c2offset + ik];
@@ -414,15 +414,16 @@ namespace Alanta.Client.Media.Dsp.Speex
                         {
                             idij += 2;
                             t3 += 2;
-                            ch[choffset + t3 - 1] = wa[waoffset + idij - 1] * c1[c1offset + t3 - 1] + wa[waoffset + idij] * c1[c1offset + t3];
-                            ch[choffset + t3] = wa[waoffset + idij - 1] * c1[c1offset + t3] - wa[waoffset + idij] * c1[c1offset + t3 - 1];
+                            ch[choffset + t3 - 1] = wa[waoffset + idij - 1]*c1[c1offset + t3 - 1] +
+                                                    wa[waoffset + idij]*c1[c1offset + t3];
+                            ch[choffset + t3] = wa[waoffset + idij - 1]*c1[c1offset + t3] -
+                                                wa[waoffset + idij]*c1[c1offset + t3 - 1];
                         }
                     }
                 }
             }
             else
             {
-
                 for (j = 1; j < ip; j++)
                 {
                     iz += ido;
@@ -436,8 +437,10 @@ namespace Alanta.Client.Media.Dsp.Speex
                         t3 = t2;
                         for (k = 0; k < l1; k++)
                         {
-                            ch[choffset + t3 - 1] = wa[waoffset + idij - 1] * c1[c1offset + t3 - 1] + wa[waoffset + idij] * c1[c1offset + t3];
-                            ch[choffset + t3] = wa[waoffset + idij - 1] * c1[c1offset + t3] - wa[waoffset + idij] * c1[c1offset + t3 - 1];
+                            ch[choffset + t3 - 1] = wa[waoffset + idij - 1]*c1[c1offset + t3 - 1] +
+                                                    wa[waoffset + idij]*c1[c1offset + t3];
+                            ch[choffset + t3] = wa[waoffset + idij - 1]*c1[c1offset + t3] -
+                                                wa[waoffset + idij]*c1[c1offset + t3 - 1];
                             t3 += ido;
                         }
                     }
@@ -445,7 +448,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
 
             t1 = 0;
-            t2 = ipp2 * t0;
+            t2 = ipp2*t0;
             if (nbd < l1)
             {
                 for (j = 1; j < ipph; j++)
@@ -499,11 +502,11 @@ namespace Alanta.Client.Media.Dsp.Speex
                 }
             }
 
-        L119:
+            L119:
             for (ik = 0; ik < idl1; ik++) c2[c2offset + ik] = ch2[ch2offset + ik];
 
             t1 = 0;
-            t2 = ipp2 * idl1;
+            t2 = ipp2*idl1;
             for (j = 1; j < ipph; j++)
             {
                 t1 += t0;
@@ -522,14 +525,14 @@ namespace Alanta.Client.Media.Dsp.Speex
             ar1 = 1.0f;
             ai1 = 0.0f;
             t1 = 0;
-            t2 = ipp2 * idl1;
-            t3 = (ip - 1) * idl1;
+            t2 = ipp2*idl1;
+            t3 = (ip - 1)*idl1;
             for (l = 1; l < ipph; l++)
             {
                 t1 += idl1;
                 t2 -= idl1;
-                ar1h = dcp * ar1 - dsp * ai1;
-                ai1 = dcp * ai1 + dsp * ar1;
+                ar1h = dcp*ar1 - dsp*ai1;
+                ai1 = dcp*ai1 + dsp*ar1;
                 ar1 = ar1h;
                 t4 = t1;
                 t5 = t2;
@@ -538,8 +541,8 @@ namespace Alanta.Client.Media.Dsp.Speex
 
                 for (ik = 0; ik < idl1; ik++)
                 {
-                    ch2[ch2offset + t4++] = c2[c2offset + ik] + ar1 * c2[c2offset + t7++];
-                    ch2[ch2offset + t5++] = ai1 * c2[c2offset + t6++];
+                    ch2[ch2offset + t4++] = c2[c2offset + ik] + ar1*c2[c2offset + t7++];
+                    ch2[ch2offset + t5++] = ai1*c2[c2offset + t6++];
                 }
 
                 dc2 = ar1;
@@ -548,14 +551,14 @@ namespace Alanta.Client.Media.Dsp.Speex
                 ai2 = ai1;
 
                 t4 = idl1;
-                t5 = (ipp2 - 1) * idl1;
+                t5 = (ipp2 - 1)*idl1;
                 for (j = 2; j < ipph; j++)
                 {
                     t4 += idl1;
                     t5 -= idl1;
 
-                    ar2h = dc2 * ar2 - ds2 * ai2;
-                    ai2 = dc2 * ai2 + ds2 * ar2;
+                    ar2h = dc2*ar2 - ds2*ai2;
+                    ai2 = dc2*ai2 + ds2*ar2;
                     ar2 = ar2h;
 
                     t6 = t1;
@@ -564,8 +567,8 @@ namespace Alanta.Client.Media.Dsp.Speex
                     t9 = t5;
                     for (ik = 0; ik < idl1; ik++)
                     {
-                        ch2[ch2offset + t6++] += ar2 * c2[c2offset + t8++];
-                        ch2[ch2offset + t7++] += ai2 * c2[c2offset + t9++];
+                        ch2[ch2offset + t6++] += ar2*c2[c2offset + t8++];
+                        ch2[ch2offset + t7++] += ai2*c2[c2offset + t9++];
                     }
                 }
             }
@@ -593,7 +596,7 @@ namespace Alanta.Client.Media.Dsp.Speex
 
             goto L135;
 
-        L132:
+            L132:
             for (i = 0; i < ido; i++)
             {
                 t1 = i;
@@ -606,14 +609,13 @@ namespace Alanta.Client.Media.Dsp.Speex
                 }
             }
 
-        L135:
+            L135:
             t1 = 0;
             t2 = ido << 1;
             t3 = 0;
-            t4 = ipp2 * t0;
+            t4 = ipp2*t0;
             for (j = 1; j < ipph; j++)
             {
-
                 t1 += t2;
                 t3 += t0;
                 t4 -= t0;
@@ -638,7 +640,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             t1 = -ido;
             t3 = 0;
             t4 = 0;
-            t5 = ipp2 * t0;
+            t5 = ipp2*t0;
             for (j = 1; j < ipph; j++)
             {
                 t1 += t2;
@@ -667,12 +669,12 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
             return;
 
-        L141:
+            L141:
 
             t1 = -ido;
             t3 = 0;
             t4 = 0;
-            t5 = ipp2 * t0;
+            t5 = ipp2*t0;
             for (j = 1; j < ipph; j++)
             {
                 t1 += t2;
@@ -700,7 +702,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
         }
 
-        static void drftf1(int n,
+        private static void drftf1(int n,
             float[] c, int coffset,
             float[] ch, int choffset,
             float[] wa, int waoffset,
@@ -719,10 +721,10 @@ namespace Alanta.Client.Media.Dsp.Speex
             {
                 kh = nf - k1;
                 ip = ifac[kh + 1];
-                l1 = l2 / ip;
-                ido = n / l2;
-                idl1 = ido * l1;
-                iw -= (ip - 1) * ido;
+                l1 = l2/ip;
+                ido = n/l2;
+                idl1 = ido*l1;
+                iw -= (ip - 1)*ido;
                 na = 1 - na;
 
                 if (ip != 4) goto L102;
@@ -730,35 +732,39 @@ namespace Alanta.Client.Media.Dsp.Speex
                 ix2 = iw + ido;
                 ix3 = ix2 + ido;
                 if (na != 0)
-                    dradf4(ido, l1, ch, choffset, c, coffset, wa, waoffset + iw - 1, wa, waoffset + ix2 - 1, wa, waoffset + ix3 - 1);
+                    dradf4(ido, l1, ch, choffset, c, coffset, wa, waoffset + iw - 1, wa, waoffset + ix2 - 1, wa,
+                        waoffset + ix3 - 1);
                 else
-                    dradf4(ido, l1, c, coffset, ch, choffset, wa, waoffset + iw - 1, wa, waoffset + ix2 - 1, wa, waoffset + ix3 - 1);
+                    dradf4(ido, l1, c, coffset, ch, choffset, wa, waoffset + iw - 1, wa, waoffset + ix2 - 1, wa,
+                        waoffset + ix3 - 1);
                 goto L110;
 
-            L102:
+                L102:
                 if (ip != 2) goto L104;
                 if (na != 0) goto L103;
 
                 dradf2(ido, l1, c, coffset, ch, choffset, wa, waoffset + iw - 1);
                 goto L110;
 
-            L103:
+                L103:
                 dradf2(ido, l1, ch, choffset, c, coffset, wa, waoffset + iw - 1);
                 goto L110;
 
-            L104:
+                L104:
                 if (ido == 1) na = 1 - na;
                 if (na != 0) goto L109;
 
-                dradfg(ido, ip, l1, idl1, c, coffset, c, coffset, c, coffset, ch, choffset, ch, choffset, wa, waoffset + iw - 1);
+                dradfg(ido, ip, l1, idl1, c, coffset, c, coffset, c, coffset, ch, choffset, ch, choffset, wa,
+                    waoffset + iw - 1);
                 na = 1;
                 goto L110;
 
-            L109:
-                dradfg(ido, ip, l1, idl1, ch, choffset, ch, choffset, ch, choffset, c, coffset, c, coffset, wa, waoffset + iw - 1);
+                L109:
+                dradfg(ido, ip, l1, idl1, ch, choffset, ch, choffset, ch, choffset, c, coffset, c, coffset, wa,
+                    waoffset + iw - 1);
                 na = 0;
 
-            L110:
+                L110:
                 l2 = l1;
             }
 
@@ -767,7 +773,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             for (i = 0; i < n; i++) c[coffset + i] = ch[choffset + i];
         }
 
-        static void dradb2(int ido, int l1,
+        private static void dradb2(int ido, int l1,
             float[] cc, int ccoffset,
             float[] ch, int choffset,
             float[] wa1, int wa1offset)
@@ -775,7 +781,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             int i, k, t0, t1, t2, t3, t4, t5, t6;
             float ti2, tr2;
 
-            t0 = l1 * ido;
+            t0 = l1*ido;
 
             t1 = 0;
             t2 = 0;
@@ -807,15 +813,15 @@ namespace Alanta.Client.Media.Dsp.Speex
                     tr2 = cc[ccoffset + t4 - 1] - cc[ccoffset + t5 - 1];
                     ch[choffset + t3] = cc[ccoffset + t4] - cc[ccoffset + t5];
                     ti2 = cc[ccoffset + t4] + cc[ccoffset + t5];
-                    ch[choffset + t6 - 1] = wa1[wa1offset + i - 2] * tr2 - wa1[wa1offset + i - 1] * ti2;
-                    ch[choffset + t6] = wa1[wa1offset + i - 2] * ti2 + wa1[wa1offset + i - 1] * tr2;
+                    ch[choffset + t6 - 1] = wa1[wa1offset + i - 2]*tr2 - wa1[wa1offset + i - 1]*ti2;
+                    ch[choffset + t6] = wa1[wa1offset + i - 2]*ti2 + wa1[wa1offset + i - 1]*tr2;
                 }
                 t2 = (t1 += ido) << 1;
             }
 
-            if (ido % 2 == 1) return;
+            if (ido%2 == 1) return;
 
-        L105:
+            L105:
             t1 = ido - 1;
             t2 = ido - 1;
             for (k = 0; k < l1; k++)
@@ -827,10 +833,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
         }
 
-        static float taur = -.5f;
-        static float taui = .8660254037844386f;
-
-        static void dradb3(int ido, int l1,
+        private static void dradb3(int ido, int l1,
             float[] cc, int ccoffset,
             float[] ch, int choffset,
             float[] wa1, int wa1offset,
@@ -838,7 +841,7 @@ namespace Alanta.Client.Media.Dsp.Speex
         {
             int i, k, t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10;
             float ci2, ci3, di2, di3, cr2, cr3, dr2, dr3, ti2, tr2;
-            t0 = l1 * ido;
+            t0 = l1*ido;
 
             t1 = 0;
             t2 = t0 << 1;
@@ -848,9 +851,9 @@ namespace Alanta.Client.Media.Dsp.Speex
             for (k = 0; k < l1; k++)
             {
                 tr2 = cc[ccoffset + t3 - 1] + cc[ccoffset + t3 - 1];
-                cr2 = cc[ccoffset + t5] + (taur * tr2);
+                cr2 = cc[ccoffset + t5] + (taur*tr2);
                 ch[choffset + t1] = cc[ccoffset + t5] + tr2;
-                ci3 = taui * (cc[ccoffset + t3] + cc[ccoffset + t3]);
+                ci3 = taui*(cc[ccoffset + t3] + cc[ccoffset + t3]);
                 ch[choffset + t1 + t0] = cr2 - ci3;
                 ch[choffset + t1 + t2] = cr2 + ci3;
                 t1 += ido;
@@ -878,29 +881,27 @@ namespace Alanta.Client.Media.Dsp.Speex
                     t9 += 2;
                     t10 += 2;
                     tr2 = cc[ccoffset + t5 - 1] + cc[ccoffset + t6 - 1];
-                    cr2 = cc[ccoffset + t7 - 1] + (taur * tr2);
+                    cr2 = cc[ccoffset + t7 - 1] + (taur*tr2);
                     ch[choffset + t8 - 1] = cc[ccoffset + t7 - 1] + tr2;
                     ti2 = cc[ccoffset + t5] - cc[ccoffset + t6];
-                    ci2 = cc[ccoffset + t7] + (taur * ti2);
+                    ci2 = cc[ccoffset + t7] + (taur*ti2);
                     ch[choffset + t8] = cc[ccoffset + t7] + ti2;
-                    cr3 = taui * (cc[ccoffset + t5 - 1] - cc[ccoffset + t6 - 1]);
-                    ci3 = taui * (cc[ccoffset + t5] + cc[ccoffset + t6]);
+                    cr3 = taui*(cc[ccoffset + t5 - 1] - cc[ccoffset + t6 - 1]);
+                    ci3 = taui*(cc[ccoffset + t5] + cc[ccoffset + t6]);
                     dr2 = cr2 - ci3;
                     dr3 = cr2 + ci3;
                     di2 = ci2 + cr3;
                     di3 = ci2 - cr3;
-                    ch[choffset + t9 - 1] = wa1[wa1offset + i - 2] * dr2 - wa1[wa1offset + i - 1] * di2;
-                    ch[choffset + t9] = wa1[wa1offset + i - 2] * di2 + wa1[wa1offset + i - 1] * dr2;
-                    ch[choffset + t10 - 1] = wa2[wa2offset + i - 2] * dr3 - wa2[wa2offset + i - 1] * di3;
-                    ch[choffset + t10] = wa2[wa2offset + i - 2] * di3 + wa2[wa2offset + i - 1] * dr3;
+                    ch[choffset + t9 - 1] = wa1[wa1offset + i - 2]*dr2 - wa1[wa1offset + i - 1]*di2;
+                    ch[choffset + t9] = wa1[wa1offset + i - 2]*di2 + wa1[wa1offset + i - 1]*dr2;
+                    ch[choffset + t10 - 1] = wa2[wa2offset + i - 2]*dr3 - wa2[wa2offset + i - 1]*di3;
+                    ch[choffset + t10] = wa2[wa2offset + i - 2]*di3 + wa2[wa2offset + i - 1]*dr3;
                 }
                 t1 += ido;
             }
         }
 
-        static float sqrt2 = 1.414213562373095f;
-
-        static void dradb4(int ido, int l1,
+        private static void dradb4(int ido, int l1,
             float[] cc, int ccoffset,
             float[] ch, int choffset,
             float[] wa1, int wa1offset,
@@ -909,7 +910,7 @@ namespace Alanta.Client.Media.Dsp.Speex
         {
             int i, k, t0, t1, t2, t3, t4, t5, t6, t7, t8;
             float ci2, ci3, ci4, cr2, cr3, cr4, ti1, ti2, ti3, ti4, tr1, tr2, tr3, tr4;
-            t0 = l1 * ido;
+            t0 = l1*ido;
 
             t1 = 0;
             t2 = ido << 2;
@@ -963,19 +964,19 @@ namespace Alanta.Client.Media.Dsp.Speex
                     ci2 = ti1 + ti4;
                     ci4 = ti1 - ti4;
 
-                    ch[choffset + (t8 = t7 + t0) - 1] = wa1[wa1offset + i - 2] * cr2 - wa1[wa1offset + i - 1] * ci2;
-                    ch[choffset + t8] = wa1[wa1offset + i - 2] * ci2 + wa1[wa1offset + i - 1] * cr2;
-                    ch[choffset + (t8 += t0) - 1] = wa2[wa2offset + i - 2] * cr3 - wa2[wa2offset + i - 1] * ci3;
-                    ch[choffset + t8] = wa2[wa2offset + i - 2] * ci3 + wa2[wa2offset + i - 1] * cr3;
-                    ch[choffset + (t8 += t0) - 1] = wa3[wa3offset + i - 2] * cr4 - wa3[wa3offset + i - 1] * ci4;
-                    ch[choffset + t8] = wa3[wa3offset + i - 2] * ci4 + wa3[wa3offset + i - 1] * cr4;
+                    ch[choffset + (t8 = t7 + t0) - 1] = wa1[wa1offset + i - 2]*cr2 - wa1[wa1offset + i - 1]*ci2;
+                    ch[choffset + t8] = wa1[wa1offset + i - 2]*ci2 + wa1[wa1offset + i - 1]*cr2;
+                    ch[choffset + (t8 += t0) - 1] = wa2[wa2offset + i - 2]*cr3 - wa2[wa2offset + i - 1]*ci3;
+                    ch[choffset + t8] = wa2[wa2offset + i - 2]*ci3 + wa2[wa2offset + i - 1]*cr3;
+                    ch[choffset + (t8 += t0) - 1] = wa3[wa3offset + i - 2]*cr4 - wa3[wa3offset + i - 1]*ci4;
+                    ch[choffset + t8] = wa3[wa3offset + i - 2]*ci4 + wa3[wa3offset + i - 1]*cr4;
                 }
                 t1 += ido;
             }
 
-            if (ido % 2 == 1) return;
+            if (ido%2 == 1) return;
 
-        L105:
+            L105:
 
             t1 = ido;
             t2 = ido << 2;
@@ -989,9 +990,9 @@ namespace Alanta.Client.Media.Dsp.Speex
                 tr1 = cc[ccoffset + t1 - 1] - cc[ccoffset + t4 - 1];
                 tr2 = cc[ccoffset + t1 - 1] + cc[ccoffset + t4 - 1];
                 ch[choffset + t5] = tr2 + tr2;
-                ch[choffset + (t5 += t0)] = sqrt2 * (tr1 - ti1);
+                ch[choffset + (t5 += t0)] = sqrt2*(tr1 - ti1);
                 ch[choffset + (t5 += t0)] = ti2 + ti2;
-                ch[choffset + (t5 += t0)] = -sqrt2 * (tr1 + ti1);
+                ch[choffset + (t5 += t0)] = -sqrt2*(tr1 + ti1);
 
                 t3 += ido;
                 t1 += t2;
@@ -999,7 +1000,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
         }
 
-        static void dradbg(int ido, int ip, int l1, int idl1,
+        private static void dradbg(int ido, int ip, int l1, int idl1,
             float[] cc, int ccoffset,
             float[] c1, int c1offset,
             float[] c2, int c2offset,
@@ -1007,19 +1008,37 @@ namespace Alanta.Client.Media.Dsp.Speex
             float[] ch2, int ch2offset,
             float[] wa, int waoffset)
         {
-            int idij, ipph, i, j, k, l, ik, t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10,
-                t11, t12;
+            int idij,
+                ipph,
+                i,
+                j,
+                k,
+                l,
+                ik,
+                t0,
+                t1,
+                t2,
+                t3,
+                t4,
+                t5,
+                t6,
+                t7,
+                t8,
+                t9,
+                t10,
+                t11,
+                t12;
             int iz;
             float dc2, ai1, ai2, ar1, ar2, ds2;
             int nbd;
             float dcp, arg, dsp, ar1h, ar2h;
             int ipp2;
 
-            t10 = ip * ido;
-            t0 = l1 * ido;
-            arg = tpi / (float)ip;
-            dcp = (float)Math.Cos(arg);
-            dsp = (float)Math.Sin(arg);
+            t10 = ip*ido;
+            t0 = l1*ido;
+            arg = tpi/ip;
+            dcp = (float) Math.Cos(arg);
+            dsp = (float) Math.Sin(arg);
             nbd = (ido - 1) >> 1;
             ipp2 = ip;
             ipph = (ip + 1) >> 1;
@@ -1042,7 +1061,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
             goto L106;
 
-        L103:
+            L103:
             t1 = 0;
             for (i = 0; i < ido; i++)
             {
@@ -1057,9 +1076,9 @@ namespace Alanta.Client.Media.Dsp.Speex
                 t1++;
             }
 
-        L106:
+            L106:
             t1 = 0;
-            t2 = ipp2 * t0;
+            t2 = ipp2*t0;
             t7 = (t5 = ido << 1);
             for (j = 1; j < ipph; j++)
             {
@@ -1083,7 +1102,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             if (nbd < l1) goto L112;
 
             t1 = 0;
-            t2 = ipp2 * t0;
+            t2 = ipp2*t0;
             t7 = 0;
             for (j = 1; j < ipph; j++)
             {
@@ -1118,9 +1137,9 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
             goto L116;
 
-        L112:
+            L112:
             t1 = 0;
-            t2 = ipp2 * t0;
+            t2 = ipp2*t0;
             t7 = 0;
             for (j = 1; j < ipph; j++)
             {
@@ -1155,19 +1174,19 @@ namespace Alanta.Client.Media.Dsp.Speex
                 }
             }
 
-        L116:
+            L116:
             ar1 = 1.0f;
             ai1 = 0.0f;
             t1 = 0;
-            t9 = (t2 = ipp2 * idl1);
-            t3 = (ip - 1) * idl1;
+            t9 = (t2 = ipp2*idl1);
+            t3 = (ip - 1)*idl1;
             for (l = 1; l < ipph; l++)
             {
                 t1 += idl1;
                 t2 -= idl1;
 
-                ar1h = dcp * ar1 - dsp * ai1;
-                ai1 = dcp * ai1 + dsp * ar1;
+                ar1h = dcp*ar1 - dsp*ai1;
+                ai1 = dcp*ai1 + dsp*ar1;
                 ar1 = ar1h;
                 t4 = t1;
                 t5 = t2;
@@ -1176,8 +1195,8 @@ namespace Alanta.Client.Media.Dsp.Speex
                 t8 = t3;
                 for (ik = 0; ik < idl1; ik++)
                 {
-                    c2[c2offset + t4++] = ch2[ch2offset + t6++] + ar1 * ch2[ch2offset + t7++];
-                    c2[c2offset + t5++] = ai1 * ch2[ch2offset + t8++];
+                    c2[c2offset + t4++] = ch2[ch2offset + t6++] + ar1*ch2[ch2offset + t7++];
+                    c2[c2offset + t5++] = ai1*ch2[ch2offset + t8++];
                 }
                 dc2 = ar1;
                 ds2 = ai1;
@@ -1190,8 +1209,8 @@ namespace Alanta.Client.Media.Dsp.Speex
                 {
                     t6 += idl1;
                     t7 -= idl1;
-                    ar2h = dc2 * ar2 - ds2 * ai2;
-                    ai2 = dc2 * ai2 + ds2 * ar2;
+                    ar2h = dc2*ar2 - ds2*ai2;
+                    ai2 = dc2*ai2 + ds2*ar2;
                     ar2 = ar2h;
                     t4 = t1;
                     t5 = t2;
@@ -1199,8 +1218,8 @@ namespace Alanta.Client.Media.Dsp.Speex
                     t12 = t7;
                     for (ik = 0; ik < idl1; ik++)
                     {
-                        c2[c2offset + t4++] += ar2 * ch2[ch2offset + t11++];
-                        c2[c2offset + t5++] += ai2 * ch2[ch2offset + t12++];
+                        c2[c2offset + t4++] += ar2*ch2[ch2offset + t11++];
+                        c2[c2offset + t5++] += ai2*ch2[ch2offset + t12++];
                     }
                 }
             }
@@ -1214,7 +1233,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
 
             t1 = 0;
-            t2 = ipp2 * t0;
+            t2 = ipp2*t0;
             for (j = 1; j < ipph; j++)
             {
                 t1 += t0;
@@ -1234,7 +1253,7 @@ namespace Alanta.Client.Media.Dsp.Speex
             if (nbd < l1) goto L128;
 
             t1 = 0;
-            t2 = ipp2 * t0;
+            t2 = ipp2*t0;
             for (j = 1; j < ipph; j++)
             {
                 t1 += t0;
@@ -1260,9 +1279,9 @@ namespace Alanta.Client.Media.Dsp.Speex
             }
             goto L132;
 
-        L128:
+            L128:
             t1 = 0;
-            t2 = ipp2 * t0;
+            t2 = ipp2*t0;
             for (j = 1; j < ipph; j++)
             {
                 t1 += t0;
@@ -1287,7 +1306,7 @@ namespace Alanta.Client.Media.Dsp.Speex
                 }
             }
 
-        L132:
+            L132:
             if (ido == 1) return;
 
             for (ik = 0; ik < idl1; ik++) c2[c2offset + ik] = ch2[ch2offset + ik];
@@ -1320,15 +1339,17 @@ namespace Alanta.Client.Media.Dsp.Speex
                     t3 = t2;
                     for (k = 0; k < l1; k++)
                     {
-                        c1[c1offset + t3 - 1] = wa[waoffset + idij - 1] * ch[choffset + t3 - 1] - wa[waoffset + idij] * ch[choffset + t3];
-                        c1[c1offset + t3] = wa[waoffset + idij - 1] * ch[choffset + t3] + wa[waoffset + idij] * ch[choffset + t3 - 1];
+                        c1[c1offset + t3 - 1] = wa[waoffset + idij - 1]*ch[choffset + t3 - 1] -
+                                                wa[waoffset + idij]*ch[choffset + t3];
+                        c1[c1offset + t3] = wa[waoffset + idij - 1]*ch[choffset + t3] +
+                                            wa[waoffset + idij]*ch[choffset + t3 - 1];
                         t3 += ido;
                     }
                 }
             }
             return;
 
-        L139:
+            L139:
             iz = -ido - 1;
             t1 = 0;
             for (j = 1; j < ip; j++)
@@ -1344,15 +1365,17 @@ namespace Alanta.Client.Media.Dsp.Speex
                     {
                         idij += 2;
                         t3 += 2;
-                        c1[c1offset + t3 - 1] = wa[waoffset + idij - 1] * ch[choffset + t3 - 1] - wa[waoffset + idij] * ch[choffset + t3];
-                        c1[c1offset + t3] = wa[waoffset + idij - 1] * ch[choffset + t3] + wa[waoffset + idij] * ch[choffset + t3 - 1];
+                        c1[c1offset + t3 - 1] = wa[waoffset + idij - 1]*ch[choffset + t3 - 1] -
+                                                wa[waoffset + idij]*ch[choffset + t3];
+                        c1[c1offset + t3] = wa[waoffset + idij - 1]*ch[choffset + t3] +
+                                            wa[waoffset + idij]*ch[choffset + t3 - 1];
                     }
                     t2 += ido;
                 }
             }
         }
 
-        static void drftb1(int n,
+        private static void drftb1(int n,
             float[] c, int coffset,
             float[] ch, int choffset,
             float[] wa, int waoffset,
@@ -1370,21 +1393,23 @@ namespace Alanta.Client.Media.Dsp.Speex
             for (k1 = 0; k1 < nf; k1++)
             {
                 ip = ifac[k1 + 2];
-                l2 = ip * l1;
-                ido = n / l2;
-                idl1 = ido * l1;
+                l2 = ip*l1;
+                ido = n/l2;
+                idl1 = ido*l1;
                 if (ip != 4) goto L103;
                 ix2 = iw + ido;
                 ix3 = ix2 + ido;
 
                 if (na != 0)
-                    dradb4(ido, l1, ch, choffset, c, coffset, wa, waoffset + iw - 1, wa, waoffset + ix2 - 1, wa, waoffset + ix3 - 1);
+                    dradb4(ido, l1, ch, choffset, c, coffset, wa, waoffset + iw - 1, wa, waoffset + ix2 - 1, wa,
+                        waoffset + ix3 - 1);
                 else
-                    dradb4(ido, l1, c, coffset, ch, choffset, wa, waoffset + iw - 1, wa, waoffset + ix2 - 1, wa, waoffset + ix3 - 1);
+                    dradb4(ido, l1, c, coffset, ch, choffset, wa, waoffset + iw - 1, wa, waoffset + ix2 - 1, wa,
+                        waoffset + ix3 - 1);
                 na = 1 - na;
                 goto L115;
 
-            L103:
+                L103:
                 if (ip != 2) goto L106;
 
                 if (na != 0)
@@ -1394,7 +1419,7 @@ namespace Alanta.Client.Media.Dsp.Speex
                 na = 1 - na;
                 goto L115;
 
-            L106:
+                L106:
                 if (ip != 3) goto L109;
 
                 ix2 = iw + ido;
@@ -1405,7 +1430,7 @@ namespace Alanta.Client.Media.Dsp.Speex
                 na = 1 - na;
                 goto L115;
 
-            L109:
+                L109:
                 /*    The radix five case can be translated later..... */
                 /*    if(ip!=5)goto L112;
 
@@ -1421,14 +1446,16 @@ namespace Alanta.Client.Media.Dsp.Speex
 
                   L112:*/
                 if (na != 0)
-                    dradbg(ido, ip, l1, idl1, ch, choffset, ch, choffset, ch, choffset, c, coffset, c, coffset, wa, waoffset + iw - 1);
+                    dradbg(ido, ip, l1, idl1, ch, choffset, ch, choffset, ch, choffset, c, coffset, c, coffset, wa,
+                        waoffset + iw - 1);
                 else
-                    dradbg(ido, ip, l1, idl1, c, coffset, c, coffset, c, coffset, ch, choffset, ch, choffset, wa, waoffset + iw - 1);
+                    dradbg(ido, ip, l1, idl1, c, coffset, c, coffset, c, coffset, ch, choffset, ch, choffset, wa,
+                        waoffset + iw - 1);
                 if (ido == 1) na = 1 - na;
 
-            L115:
+                L115:
                 l1 = l2;
-                iw += (ip - 1) * ido;
+                iw += (ip - 1)*ido;
             }
 
             if (na == 0) return;
@@ -1436,21 +1463,21 @@ namespace Alanta.Client.Media.Dsp.Speex
             for (i = 0; i < n; i++) c[coffset + i] = ch[choffset + i];
         }
 
-        void spx_drft_forward(float[] data, int dataoffset)
+        private void spx_drft_forward(float[] data, int dataoffset)
         {
             if (n == 1) return;
             drftf1(n, data, dataoffset, trigcache, 0, trigcache, n, splitcache);
         }
 
-        void spx_drft_backward(float[] data, int dataoffset)
+        private void spx_drft_backward(float[] data, int dataoffset)
         {
             if (n == 1) return;
             drftb1(n, data, dataoffset, trigcache, 0, trigcache, n, splitcache);
         }
 
-        void spx_drft_init(int n)
+        private void spx_drft_init(int n)
         {
-            trigcache = new float[3 * n]; //(float*)speex_alloc(3*n*sizeof(*l.trigcache));
+            trigcache = new float[3*n]; //(float*)speex_alloc(3*n*sizeof(*l.trigcache));
             splitcache = new int[32]; // (int*)speex_alloc(32*sizeof(*l.splitcache));
             fdrffti(n, trigcache, splitcache);
         }

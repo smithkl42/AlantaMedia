@@ -53,7 +53,6 @@ namespace Alanta.Client.Media.Dsp
 			base.Write(sampleData);
 		}
 
-
 		public override bool Read(Array outBuffer, out bool moreFrames)
 		{
 			bool successful = base.Read(outBuffer, out moreFrames);
@@ -84,6 +83,5 @@ namespace Alanta.Client.Media.Dsp
 				unreadBytesAtLastCorrection = UnreadBytes;
 			}
 		}
-
 	}
 }
