@@ -223,7 +223,7 @@
 							Source="/Alanta.Client.Ui.Common;component/Images/MicrophoneWhite.png" />
                         <TextBlock 
 							Margin="4" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center"
-							Text="{Binding Resource.StartMicrophone, Source={StaticResource commonStrings}}" Foreground="White" FontFamily="Helvetica" />
+							Text="Start Microphone" Foreground="White" FontFamily="Helvetica" />
                     </StackPanel>
                 </Button>
                 <Button 
@@ -241,7 +241,7 @@
 							Source="/Alanta.Client.Ui.Controls;component/Images/WebcamWhite.png" />
                         <TextBlock 
 							Margin="4" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Helvetica"
-							Text="{Binding Resource.StartWebcam, Source={StaticResource commonStrings}}" Foreground="White" />
+							Text="Start Webcam" Foreground="White" />
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -251,7 +251,6 @@
         <Grid x:Name="presencePanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed">
 
             <Rectangle x:Name="videoCapture" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RadiusX="5" RadiusY="5" Visibility="Collapsed"  />
-            <ProgressBar Visibility="Collapsed" Style="{StaticResource AudioProgressBarStyle}" Value="50" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" />
             <Image x:Name="imgAvatar" Height="134" Width="200" Stretch="Uniform"  Visibility="Collapsed" />
             <StackPanel 
 					x:Name="panelAvQuality" 
@@ -303,19 +302,6 @@
 			x:Name="mutedIconsPanel" 
 			Orientation="Vertical" Margin="0,3,0,0" Width="27" HorizontalAlignment="Right" Visibility="Collapsed" 
 			DataContext="{Binding MediaController}">
-            <Grid x:Name="audioMuted" HorizontalAlignment="Right" VerticalAlignment="Top" Width="17"
-					ToolTipService.ToolTip="{Binding Resource.MicrophoneMuted,	Source={StaticResource commonStrings}}"
-					Visibility="{Binding IsMicrophoneMuted,	Converter={StaticResource boolToVisibilityConverter}}">
-                <Path HorizontalAlignment="Left" Stretch="Fill"
-							Fill="Black" Data="F1 M 23.1457,26.5056L 23.1457,33.8944L 25.7913,33.8944L 28.8235,37.4722L 30.5346,37.4722L 30.5665,23.0833L 28.8995,23.0833L 25.8679,26.5056L 23.1457,26.5056 Z "
-							Width="7.421" Height="14.389" UseLayoutRounding="False" />
-                <Image Source="/Alanta.Client.UI.Common;component/Images/close.png" Stretch="Fill" Width="12" Height="12" Margin="0" />
-            </Grid>
-            <Grid x:Name="videoMuted"
-					ToolTipService.ToolTip="{Binding Resource.WebcamMuted, Source={StaticResource commonStrings}}"
-					Visibility="{Binding IsLocalWebcamMuted, Converter={StaticResource boolToVisibilityConverter}}">
-                <Image Source="/Alanta.Client.UI.Common;component/Images/webcam_disable.png" Stretch="Fill" />
-            </Grid>
         </StackPanel>
 
     </Grid>

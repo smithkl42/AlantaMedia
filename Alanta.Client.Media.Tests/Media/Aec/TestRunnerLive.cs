@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using Alanta.Client.Media;
+using Alanta.Client.Media.Tests.Media.Aec;
 using Alanta.Client.UI.Desktop.Controls.AudioVisualizer;
 
 namespace Alanta.Client.Test.Media.Aec

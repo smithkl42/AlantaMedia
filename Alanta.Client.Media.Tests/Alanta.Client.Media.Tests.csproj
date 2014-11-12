@@ -278,6 +278,10 @@
       <Project>{e0849476-0465-414c-81f2-4ee3ddc248bc}</Project>
       <Name>Alanta.Client.Media</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Alanta.Client.Ui.Common\Alanta.Client.Ui.Common.csproj">
+      <Project>{56B6CA54-EC48-4E3C-B0B8-696A3DBA7D1F}</Project>
+      <Name>Alanta.Client.Ui.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

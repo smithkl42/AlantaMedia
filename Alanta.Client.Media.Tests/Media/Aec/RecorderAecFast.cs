@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Alanta.Client.Media;
 using Alanta.Client.Media.Dsp;
-using Alanta.Client.UI.Desktop.Controls.AudioVisualizer;
+using Alanta.Client.Test.Media.Aec;
+using Alanta.Client.Ui.Controls.AudioVisualizer;
 
-namespace Alanta.Client.Test.Media.Aec
+namespace Alanta.Client.Media.Tests.Media.Aec
 {
 	public class RecorderAecFast : RecorderAec
 	{

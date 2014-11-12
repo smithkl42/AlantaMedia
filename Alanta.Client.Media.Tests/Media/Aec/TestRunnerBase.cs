@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
-using Alanta.Client.Media;
 using Alanta.Client.Media.Dsp;
 using Alanta.Client.Media.Dsp.Speex;
 using Alanta.Client.Media.Dsp.WebRtc;
-using Alanta.Client.UI.Desktop.Controls.AudioVisualizer;
+using Alanta.Client.Test.Media.Aec;
+using Alanta.Client.Ui.Controls.AudioVisualizer;
 using ReactiveUI;
-using AudioFormat = Alanta.Client.Media.AudioFormat;
 
-namespace Alanta.Client.Test.Media.Aec
+namespace Alanta.Client.Media.Tests.Media.Aec
 {
 	public abstract class TestRunnerBase : ReactiveObject
 	{
